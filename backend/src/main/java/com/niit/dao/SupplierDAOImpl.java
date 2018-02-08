@@ -1,25 +1,25 @@
 package com.niit.dao;
 
 import java.util.List;
+
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
-import com.niit.model.Category;
+import com.niit.model.Supplier;
 
-@Repository("categoryDAO")
-public class CategoryDAOImpl implements CategoryDAO {
+@Repository("supplierDAO")
+public class SupplierDAOImpl implements SupplierDAO {
 	@Autowired
-	SessionFactory sessionFactory;	
-	
+	SessionFactory sessionFactory;
+		
 	@Transactional
 	@Override
-	public boolean addCategory(Category category) 
-	{	
+	public boolean addSupplier(Supplier supplier) {
 		try {
-			sessionFactory.getCurrentSession().save(category);
+			sessionFactory.getCurrentSession().save(supplier);
 			return true;
 		}
 		catch(Exception e) {
@@ -29,36 +29,26 @@ public class CategoryDAOImpl implements CategoryDAO {
 		}
 	}
 	
-	@Override
-	public Category getCategory(int categoryId) {
-		Session session=sessionFactory.openSession();
-		Category category=(Category)session.get(Category.class,categoryId);
-		session.close();
-		return category;
-	}
-
 	@Transactional
 	@Override
-	public boolean deleteCategory(Category category) {
+	public boolean updateSupplier(Supplier supplier) {
 		try {
-			sessionFactory.getCurrentSession().delete(category);
+			sessionFactory.getCurrentSession().update(supplier);
 			return true;
-		}
-		catch(Exception e) {
+		}catch(Exception e) {
 			System.out.println("There is an exception here! The details are: \n =================================");
 			System.out.println(e);
 			return false;
-		}
+		}		
 	}
 
 	@Transactional
 	@Override
-	public boolean updateCategory(Category category) {
+	public boolean deleteSupplier(Supplier supplier) {
 		try {
-			sessionFactory.getCurrentSession().update(category);
+			sessionFactory.getCurrentSession().delete(supplier);
 			return true;
-		}
-		catch(Exception e) {
+		}catch(Exception e) {
 			System.out.println("There is an exception here! The details are: \n =================================");
 			System.out.println(e);
 			return false;
@@ -66,12 +56,18 @@ public class CategoryDAOImpl implements CategoryDAO {
 	}
 
 	@Override
-	public List<Category> listCategory() {
+	public Supplier viewSupplier(String supplierId) {
 		Session session = sessionFactory.openSession();
-		Query query = session.createQuery("from Category");
-		List<Category> listCategories = (List<Category>)query.list();
-		return listCategories;
+		Supplier supplier = (Supplier)session.get(Supplier.class,supplierId);
+		session.close();
+		return supplier;
 	}
-	
-	
+
+	@Override
+	public List<Supplier> listSuppliers() {
+		Session session = sessionFactory.openSession();
+		Query query = session.createQuery("from Supplier");
+		List<Supplier> listOfSuppliers = (List<Supplier>)query.list();
+		return listOfSuppliers;
+	}	
 }

@@ -11,14 +11,20 @@ import org.springframework.orm.hibernate4.HibernateTransactionManager;
 import org.springframework.orm.hibernate4.LocalSessionFactoryBuilder;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
-import com.niit.dao.CategoryDAO;
-import com.niit.dao.CategoryDAOImpl;
+import com.niit.dao.*;
 import com.niit.model.Category;
+import com.niit.model.Product;
+import com.niit.model.Supplier;
+import com.niit.model.UserDetail;
 
 @Configuration
 @ComponentScan("com.niit")
 @EnableTransactionManagement
 public class DBConfig {
+	
+	static {
+		System.out.println("DB Config class is loaded now!");
+	}
 	
 	/* Method used to set the parameters for H2 connectivity */
 	public DataSource getH2DataSource() {
@@ -41,6 +47,9 @@ public class DBConfig {
 		
 		LocalSessionFactoryBuilder factoryBuilder=new LocalSessionFactoryBuilder(getH2DataSource());
 		factoryBuilder.addAnnotatedClass(Category.class);
+		factoryBuilder.addAnnotatedClass(Product.class);
+		factoryBuilder.addAnnotatedClass(UserDetail.class);
+		factoryBuilder.addAnnotatedClass(Supplier.class);
 		factoryBuilder.addProperties(hibernateProp);
 		
 		System.out.println("Creating SessionFactory Bean");
@@ -51,8 +60,29 @@ public class DBConfig {
 	@Bean(name="categoryDAO")
 	public CategoryDAO getCategoryDAO()
 	{
-		System.out.println("----DAO Implementation---");
+		System.out.println("----CategoryDAO bean creation---");
 		return new CategoryDAOImpl();
+	}
+	
+	/* Method to create the bean of ProductDAO */
+	@Bean(name="productDAO")
+	public ProductDAO getProductDAO() {
+		System.out.println("----ProductDAO bean creation---");
+		return new ProductDAOImpl();
+	}
+	
+	/* Method to create the bean of UserDetailDAO */
+	@Bean(name="userDetailDAO")
+	public UserDetailDAO getuserDetailDAO() {
+		System.out.println("----UserDetailDAO bean creation---");
+		return new UserDetailDAOImpl();
+	}
+	
+	/* Method to create the bean of SupplierDAO */
+	@Bean(name="supplierDAO")
+	public SupplierDAO getSupplierDAO() {
+		System.out.println("----Supplier DAO bean creation---");
+		return new SupplierDAOImpl();
 	}
 	
 	/* Method to create the bean of TransactionManager */

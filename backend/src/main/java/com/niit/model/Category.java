@@ -13,7 +13,7 @@ public class Category {
 	private int categoryId;
 		
 	private String categoryName;
-	private String cateogryDesc;
+	private String categoryDesc;
 		
 	public int getCategoryId() {
 		return categoryId;
@@ -31,11 +31,11 @@ public class Category {
 		this.categoryName = categoryName;
 	}
 
-	public String getCateogryDesc() {
-		return cateogryDesc;
+	public String getCategoryDesc() {
+		return categoryDesc;
 	}
 
-	public void setCateogryDesc(String cateogryDesc) {
-		this.cateogryDesc = cateogryDesc;
+	public void setCategoryDesc(String categoryDesc) {
+		this.categoryDesc = categoryDesc;
 	}
 }
