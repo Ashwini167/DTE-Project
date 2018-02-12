@@ -13,17 +13,16 @@ public class CategoryUnitTest {
 	static CategoryDAO categoryDAO;
 
 	@BeforeClass
-	public static void executeFirst()
-	{
+	public static void executeFirst() {
 		AnnotationConfigApplicationContext context=new AnnotationConfigApplicationContext();
 		context.scan("com.niit");
 		context.refresh();
 		categoryDAO=(CategoryDAO)context.getBean("categoryDAO");
 	}
+	
 	@Ignore
 	@Test
-	public void addCategoryTest()
-	{
+	public void addCategoryTest() {
 		Category category=new Category();
 		category.setCategoryName("Gadgets");
 		category.setCategoryDesc("Latest gadgets");
@@ -32,16 +31,17 @@ public class CategoryUnitTest {
 	
 	@Ignore
 	@Test
-	public void getCategoryTest()
-	{
+	public void getCategoryTest() {
 		assertNotNull("Problem in get Category",categoryDAO.getCategory(2));
 	}
+	
 	@Ignore
 	@Test
 	public void deleteCategoryTest() {
 		Category category = categoryDAO.getCategory(4);		
 		assertTrue("Problem in Category Deletion",categoryDAO.deleteCategory(category));		
 	}
+	
 	@Ignore
 	@Test
 	public void updateCategoryTest() {

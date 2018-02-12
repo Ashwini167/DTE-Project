@@ -63,7 +63,7 @@ public class ProductUnitTest {
 		assertTrue("Problem in Product updation",productDAO.updateProduct(product));		
 	}
 	
-	@Ignore
+	
 	@Test
 	public void listProductTest() {
 		assertNotNull("Problem in listing all Product",productDAO.listProducts());
