@@ -4,6 +4,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.Transient;
+import org.springframework.web.multipart.MultipartFile;
 
 @Entity
 @Table
@@ -17,7 +19,8 @@ public class Product {
 	private int price;
 	private int stock;
 	private String prodDesc;
-	//private Multipart image;
+	@Transient
+	private MultipartFile pimage;
 	
 	public int getProductId() {
 		return productId;
@@ -60,5 +63,13 @@ public class Product {
 	}
 	public void setProdDesc(String prodDesc) {
 		this.prodDesc = prodDesc;
+	}
+	public MultipartFile getPimage() {
+		System.out.println("getpImage method");
+		return pimage;
+	}
+	public void setPimage(MultipartFile pimage) {
+		System.out.println("setpImage method");
+		this.pimage = pimage;
 	}	
 }
