@@ -16,7 +16,9 @@
 	</tr>
 	<tr>
 		<td class="active">Category ID</td>
-		<td><input type="text" id="catId" readonly name="catId" value="${categoryInfo.categoryId}"/></td>
+		<td>		
+		<input type="text" id="catId" readonly name="catId" value="${categoryInfo.categoryId}"/>
+		</td>
 	</tr>
 	<tr>
 		<td class="active">Category Name</td>

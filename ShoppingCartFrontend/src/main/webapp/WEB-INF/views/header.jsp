@@ -1,6 +1,6 @@
 <html>
 <head>
-  <link rel="stylesheet" href="css/basicStyles.css">
+  <link rel="stylesheet" href="resources/css/basicStyles.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -16,7 +16,7 @@
     	    		<span class="icon-bar"></span>
      	 		</button>
      	 		<a class="navbar-brand" href="#">     	 		 
-     	 			<img alt="Shopping Cart" class="brandimage" src="images/shoppingcart.png" /> 
+     	 			<img alt="Shopping Cart" class="brandimage" src="resources/images/shoppingcart.png" /> 
       			</a> 
     		</div>
 	
@@ -31,8 +31,15 @@
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Category<span class="caret"></span></a>
           <ul class="dropdown-menu">
             <li><a href="category">Category</a></li>
+            <li><a href="product">Product</a></li>
             <li><a href="category">Category</a></li>
-            <li><a href="category">Category</a></li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Product<span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="viewProducts">View Products</a></li>
+            <li><a href="product">Add Product</a></li>
           </ul>
         </li>
       </ul>

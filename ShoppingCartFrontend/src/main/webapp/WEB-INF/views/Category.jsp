@@ -3,7 +3,7 @@
 <%@include file="header.jsp" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <h3 align="center">Add Category</h3>
-<form action="insertCategory" method="post">
+<form action="<c:url value="/insertCategory" />" method="post">
 	
 <table align="center" class="table table-hover table-condensed" style="width: 50%;">	
 	<tr class="success">

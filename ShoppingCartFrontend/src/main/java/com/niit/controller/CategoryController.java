@@ -71,6 +71,5 @@ public class CategoryController {
 		m.addAttribute("listCategories", listCategories);
 		
 		return "Category";
-	}
-	
+	}	
 }
