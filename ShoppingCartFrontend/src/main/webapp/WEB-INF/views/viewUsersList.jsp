@@ -5,7 +5,7 @@
 	<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>	
 	<title>Users List</title>
 </head>
-<body>
+<body class="bg">
 <form:form>
 	<div class="container"> 
 		<div id="loginbox" class="mainbox col-md-12 col-sm-12 margin50">

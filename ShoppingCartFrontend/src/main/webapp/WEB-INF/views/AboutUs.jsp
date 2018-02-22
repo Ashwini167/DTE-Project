@@ -6,7 +6,7 @@
 <%@include file="header.jsp" %>
 <title>About Us</title>
 </head>
-<body>
+<body class="bg">
 This is my About US page!
 </body>
 </html>

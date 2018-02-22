@@ -7,7 +7,7 @@
 	<title>Add New Product</title>
 </head>
 
-<body>
+<body class="bg">
 <div class="container">
 <form:form action="insertProduct" modelAttribute="product" enctype="multipart/form-data">
 	<div id="loginbox" class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2 margin50">                    

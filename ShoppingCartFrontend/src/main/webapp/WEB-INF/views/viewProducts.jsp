@@ -9,7 +9,7 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <title>Update Product Details</title>
 </head>
-<body>
+<body class="bg">
 <form:form modelAttribute="product">
 <div class="container">
 	<div class="panel panel-success" >

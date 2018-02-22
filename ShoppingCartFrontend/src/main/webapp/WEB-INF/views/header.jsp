@@ -4,9 +4,21 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <link rel="stylesheet" href="resources/css/basicStyles.css">
+  <style type="text/css">
+	body, html {
+    	height: 100%;
+	}
+	.bg { 
+    	background-image: url("resources/images/bgImages/MayTry4.jpg");
+    	height: 100%; 
+    	background-position: center;
+    	background-repeat:repeat-y;
+    	background-size: cover;
+	}	
+	</style>
 </head>
 <body>
-	<nav class="navbar navbar-default">
+	<nav class="navbar navbar-inverse">
  		<div class="container-fluid">
     		<div class="navbar-header">
       			<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">

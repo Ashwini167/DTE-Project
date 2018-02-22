@@ -15,7 +15,7 @@
 	}
 	</style>	
 </head>
-<body>
+<body class="bg">
 <div class="container">
 <form action="<c:url value="/updateCategory" />" method="post">
   <div id="loginbox" class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2 margin50">                    

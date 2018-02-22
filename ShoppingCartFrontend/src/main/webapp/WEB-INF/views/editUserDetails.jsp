@@ -16,7 +16,7 @@
 	}
 	</style>
 </head>
-<body>
+<body class="bg">
 	<div class="container">
 		<div id="signupbox"	class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2 margin50">
 			<div class="panel panel-success">

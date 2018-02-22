@@ -4,7 +4,7 @@
 	<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>	
 	<title>Add Category</title>
 </head>
-<body>
+<body class="bg">
 <div class="container">   
 <form action="<c:url value="/insertCategory" />" method="post"> 
         <div id="loginbox" class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2 margin50">                    

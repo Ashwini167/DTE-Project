@@ -4,7 +4,7 @@
 	<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>	
 	<title>Add Category</title>
 </head>
-<body>
+<body class="bg">
 <div class="container">
 <div id="loginbox" class="mainbox col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2 margin50">
 	<div class="panel panel-success" >

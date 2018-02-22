@@ -16,7 +16,7 @@
 	}
 	</style>
 </head>
-<body>
+<body class="bg">
 <c:url value="/editProduct" var="actionString" />
 <div class="container">
 <form:form action="${actionString}" modelAttribute="product" enctype="multipart/form-data" method="POST" >

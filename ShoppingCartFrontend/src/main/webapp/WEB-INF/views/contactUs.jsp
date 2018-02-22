@@ -6,7 +6,7 @@
 <%@include file="header.jsp" %>
 <title>Contact Us</title>
 </head>
-<body>
+<body class="bg">
 <h3>Call us on 12344566 (Toll free) for any queries</h3>
 </body>
 </html>

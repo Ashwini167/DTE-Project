@@ -21,7 +21,7 @@
 	}
 </style>
 </head>
-<body>
+<body class="bg">
 <div class="container">
 <form:form action="editProduct" modelAttribute="product">
 	<table align="center" class="table table-hover table-condensed"  style="width: 90%;">

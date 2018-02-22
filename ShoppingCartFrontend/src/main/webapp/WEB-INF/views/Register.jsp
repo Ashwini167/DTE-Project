@@ -5,7 +5,7 @@
 	<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 	<title>Register/Sign-Up</title>
 </head>
-<body>
+<body class="bg">
 	<div class="container">
 		<div id="signupbox"	class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2 margin50">
 			<div class="panel panel-success">
@@ -21,7 +21,7 @@
 							<p>Error:</p>
 							<span></span>
 						</div>
-						<p>${message}</p>
+						<p class="bg-danger">${message}</p>
 						<div class="form-group">
 							<label for="fname" class="col-md-3 control-label">Name</label>
 							<div class="col-md-9">

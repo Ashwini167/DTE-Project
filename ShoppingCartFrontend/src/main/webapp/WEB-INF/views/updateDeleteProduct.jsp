@@ -5,7 +5,7 @@
 	<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 	<title>Update or Delete Product</title>
 </head>
-<body>
+<body class="bg">
 <div class="container">
 	<form:form modelAttribute="product" method="GET">
 	<div id="loginbox" class="mainbox col-md-12 col-sm-8 margin50">

@@ -5,7 +5,7 @@
 	<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 	<title>Welcome Back!</title>
 </head>
-<body>
+<body class="bg">
 	<div class="container">    
         <div id="loginbox" class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2 margin50">                    
             <div class="panel panel-success" >
@@ -16,7 +16,7 @@
 
                     <div style="padding-top:30px" class="panel-body">
                         <div style="display:none" id="login-alert" class="alert alert-danger col-sm-12"></div>
-                        <p>${message}</p>
+                        <p class="bg-danger">${message}</p>
                         <c:url value="/signIn" var="actionString" />                         
                         <form:form id="loginform" cssClass="form-horizontal" action="${actionString}" method="POST" modelAttribute="user">                                    
                             <div style="margin-bottom: 25px" class="input-group">
