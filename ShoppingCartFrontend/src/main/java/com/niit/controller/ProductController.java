@@ -29,7 +29,7 @@ public class ProductController {
 	
 	public boolean flag;
 	
-	@RequestMapping("/product")
+	@RequestMapping("/addProduct")
 	public String showProduct(Model m) {
 		Product product = new Product();
 		List<Product> listProducts = productDAO.listProducts();
@@ -37,6 +37,15 @@ public class ProductController {
 		m.addAttribute("catList", this.listCategories());
 		m.addAttribute("listProducts", listProducts);
 		return "addProduct";
+	}
+	
+	@RequestMapping("/updateProduct")
+	public String showProductUpdatePage(Model m) {
+		Product product = new Product();
+		List<Product> listProducts = productDAO.listProducts();
+		m.addAttribute(product);
+		m.addAttribute("listProducts", listProducts);
+		return "updateDeleteProduct";
 	}
 	
 	@RequestMapping(value="/insertProduct", method=RequestMethod.POST)
@@ -68,28 +77,32 @@ public class ProductController {
 	
 	@RequestMapping("/editProduct/{productId}")
 	public String updateProduct(@PathVariable("productId") int productId, Model m) {
-		Product prod = productDAO.viewProduct(productId);	
+		System.out.println("Product ID from the URL: "+productId);
+		Product prod = productDAO.viewProduct(productId);
+		System.out.println("Product ID from Product Object in DB: "+prod.getProductId());
 		m.addAttribute("product", prod);		
 		List<Product> listProducts = productDAO.listProducts();
-		m.addAttribute("listProducts", listProducts);		
+		m.addAttribute("listProducts", listProducts);
+		m.addAttribute("catList", this.listCategories());
 		return "editProduct";
 	}
 	
-	@RequestMapping("/editProduct")
+	@RequestMapping(value="/editProduct",method=RequestMethod.POST)
 	public String updateProductInDB(@ModelAttribute("product")Product product, Model m,@RequestParam("pimage") MultipartFile filedet, BindingResult result) {
+		System.out.println("Update Product in DB method");
 		productDAO.updateProduct(product);		
 		boolean uploadResult = saveImage(filedet, product.getProductId());
 		if(uploadResult)
 			System.out.println("Image uploaded successfully");
 		else
 			System.out.println("Error in image upload");
-		
 		List<Product> listProducts = productDAO.listProducts();
 		m.addAttribute("listProducts", listProducts);		
-		return "editProduct";
+		return "viewProducts";
 	}	
 	
 	public boolean saveImage(MultipartFile filedet, int productId) {
+		System.out.println("Inside save image method");
 		boolean flag = false;
 		String imagePath = "G:\\DTE Project\\ShoppingCartFrontend\\src\\main\\webapp\\resources\\images\\";
 		imagePath = imagePath + String.valueOf(productId) + ".jpg";
@@ -113,10 +126,12 @@ public class ProductController {
 		}
 		return flag;
 	}
+	
 	@RequestMapping(value="/viewProducts", method=RequestMethod.GET)
 	public String viewProducts(Model m) {
 		List<Product> listProducts = productDAO.listProducts();
 		m.addAttribute("listProducts", listProducts);
+		m.addAttribute("catList", this.listCategories());
 		return "viewProducts";
 	}
 	
@@ -129,5 +144,17 @@ public class ProductController {
 			quantityMap.put(i,String.valueOf(i));
 		m.addAttribute("quantityValues", quantityMap);
 		return "viewProductDetail";
+	}
+	
+	@RequestMapping("/deleteProduct/{productId}")
+	public String deleteProduct(@PathVariable("productId") int productId, Model m) {
+		System.out.println("Product ID from the URL: "+productId);
+		Product prod = productDAO.viewProduct(productId);
+		System.out.println("Product deleted is: "+prod.getProductName());
+		productDAO.deleteProduct(prod);				
+		List<Product> listProducts = productDAO.listProducts();
+		m.addAttribute("listProducts", listProducts);
+		m.addAttribute("catList", this.listCategories());
+		return "viewProducts";
 	}	
 }

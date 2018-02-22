@@ -4,27 +4,54 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
+<%@taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
 <%@include file="header.jsp" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <title>Update Product Details</title>
 </head>
 <body>
-<form:form action="editProduct" modelAttribute="product">
-<div class="row">
-<c:forEach items="${listProducts}" var="product">
-  <div class="col-sm-3 col-md-3">   
-    <div class="thumbnail">
-		<a href="viewProductDetail/${product.productId}"><img src="<c:url value="/resources/images/${product.productId}.jpg"/>" alt="ProductImage" width="100" height="100"/></a>
-		<div class="caption">
-			<h3><a href="viewProductDetail/${product.productId}">${product.productName}</a></h3>
-			<p>${product.prodDesc}</p>
-			<p>Rs. ${product.price}/-</p>
-			<p><a href="#" class="btn btn-success" role="button">Add to cart</a><a href="#" class="btn btn-warning" role="button">Add to wishlist</a></p>	
+<form:form modelAttribute="product">
+<div class="container">
+	<div class="panel panel-success" >
+		<div class="panel-heading">
+	    	<div class="panel-title">Our Products</div>
+	    </div>
+	    <div class="panel-body">
+	    <p><strong>Browse by categories:</strong></p>
+	    <p style="padding-bottom:15px;">
+	    	<a href="#" class="btn btn-info" role="button">All</a>&nbsp;&nbsp;&nbsp;&nbsp;
+	    	<c:forEach items="${catList}" var="category">
+	    		<c:set var="catIdFromList" value="${category.key}"></c:set>
+	   			<a class="btn btn-info" role="button" data-toggle="collapse" href="#<c:out value="${catIdFromList}"/>" aria-expanded="false" aria-controls="collapseExample">${category.value}</a>&nbsp;&nbsp;&nbsp;&nbsp;
+	   		</c:forEach>
+	   	</p>
+	   	<c:forEach items="${catList}" var="category">
+	   	<c:set var="catIdForCollapse" value="${category.key}"></c:set>
+	   	<div class="collapse" id="${catIdForCollapse}">			
+			<div class="row">			
+			<div class="well"><h4 style="font-weight: bold;">${category.value}</h4></div>
+				<c:forEach items="${listProducts}" var="product">
+				<c:set var = "catIdFromProduct" value = "${product.categoryId}"/>
+				<c:set var = "catIdFromCategoryList" value = "${category.key}"/>
+				<c:if test="${catIdFromProduct==catIdFromCategoryList}">
+				  <div class="col-sm-3 col-md-4">   
+				    <div class="thumbnail">
+						<a href="viewProductDetail/${product.productId}"><img src="<c:url value="/resources/images/${product.productId}.jpg"/>" alt="ProductImage" width="100" height="100"/></a>
+						<div class="caption">
+							<h3><a href="viewProductDetail/${product.productId}">${product.productName}</a></h3>
+							<p>${product.prodDesc}</p>
+							<p><b>Rs.&nbsp;${product.price}/-</b></p>
+							<p><a href="#" class="btn btn-success" role="button">Add to cart</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#" class="btn btn-warning" role="button">Add to wishlist</a></p>	
+						</div>
+					</div>
+				  </div>
+				  </c:if>
+				</c:forEach>
+			</div>
+			</div>			
+			</c:forEach>			
 		</div>
 	</div>
-  </div>
-</c:forEach>
 </div>
 </form:form>
 </body>

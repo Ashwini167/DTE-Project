@@ -19,11 +19,18 @@ public class CategoryController {
 	
 	public boolean flag;
 	
-	@RequestMapping("/category")
+	@RequestMapping("/addCategory")
 	public String showCategory(Model m) {
 		List<Category> listCategories = categoryDAO.listCategory();
 		m.addAttribute("listCategories", listCategories);
-		return "Category";
+		return "addCategory";
+	}
+	
+	@RequestMapping("/updateCategoryDetails")
+	public String showCategoryforUpdate(Model m) {
+		List<Category> listCategories = categoryDAO.listCategory();
+		m.addAttribute("listCategories", listCategories);
+		return "updateCategoryDetails";
 	}
 	
 	@RequestMapping("/editCategory/{categoryId}")
@@ -46,7 +53,7 @@ public class CategoryController {
 		List<Category> listCategories = categoryDAO.listCategory();
 		m.addAttribute("listCategories", listCategories);
 		
-		return "Category";
+		return "addCategory";
 	}
 	
 	@RequestMapping(value="/updateCategory",method=RequestMethod.POST)
@@ -59,7 +66,7 @@ public class CategoryController {
 		List<Category> listCategories = categoryDAO.listCategory();
 		m.addAttribute("listCategories", listCategories);
 		
-		return "Category";
+		return "addCategory";
 	}
 	
 	@RequestMapping("/deleteCategory/{categoryId}")
@@ -70,6 +77,6 @@ public class CategoryController {
 		List<Category> listCategories = categoryDAO.listCategory();
 		m.addAttribute("listCategories", listCategories);
 		
-		return "Category";
+		return "addCategory";
 	}	
 }
