@@ -51,7 +51,31 @@
 					</a>
 				</div>
 			</div>
-		</div>			
+		</div>
+		<div class="panel panel-success">
+			<div class="panel-heading">
+				<div class="panel-title">Explore our products from various categories</div>
+			</div>
+			<div class="panel-body">
+				<div class="row">
+				<c:forEach items="${listCategories}" var="category">
+					<div class="col-sm-6 col-md-4">					
+						<div class="thumbnail">
+							<img src="resources/images/shoppingcart.png" alt="Alternate Name for the picture">
+							<div class="caption">
+								<h3>${category.categoryName}</h3>
+								<p>${category.categoryDesc}</p>
+								<p>
+									<a href="viewProducts" class="btn btn-warning" role="button">Explore More</a> 
+								</p>
+							</div>
+						</div>
+					
+					</div>
+					</c:forEach>
+				</div>
+			</div>
+		</div>
 	</div>
 </body>
 </html>

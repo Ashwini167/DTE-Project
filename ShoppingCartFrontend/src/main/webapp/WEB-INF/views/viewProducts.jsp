@@ -8,6 +8,12 @@
 <%@include file="header.jsp" %>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <title>Update Product Details</title>
+<style type="text/css">
+.img-responsive, .thumbnail a>img, .thumbnail>img {
+	width: 100;
+	height: 100;
+}
+</style>
 </head>
 <body class="bg">
 <form:form modelAttribute="product">
@@ -36,7 +42,7 @@
 				<c:if test="${catIdFromProduct==catIdFromCategoryList}">
 				  <div class="col-sm-3 col-md-4">   
 				    <div class="thumbnail">
-						<a href="viewProductDetail/${product.productId}"><img src="<c:url value="/resources/images/${product.productId}.jpg"/>" alt="ProductImage" width="100" height="100"/></a>
+						<a href="viewProductDetail/${product.productId}"><img src="<c:url value="/resources/images/${product.productId}.jpg"/>" alt="ProductImage"/></a>
 						<div class="caption">
 							<h3><a href="viewProductDetail/${product.productId}">${product.productName}</a></h3>
 							<p>${product.prodDesc}</p>

@@ -9,7 +9,7 @@
     	height: 100%;
 	}
 	.bg { 
-    	background-image: url("resources/images/bgImages/MayTry4.jpg");
+    	background-image: url("resources/images/bgImages/TheMapleLeaves.jpg");
     	height: 100%; 
     	background-position: center;
     	background-repeat:repeat-y;
@@ -61,6 +61,14 @@
             <li><a href="modifyUserDetail">Modify (Update/Delete Users)</a></li>
           </ul>
         </li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Supplier<span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="viewSupplierAddPage">Add Supplier</a></li>
+            <li><a href="viewSupplierDetails">View Supplier List</a></li>
+            <li><a href="viewSupplierDetails">Modify (Update/Delete Suppliers)</a></li>
+          </ul>
+        </li>        
       </ul>
      </div>	
 	</div>
