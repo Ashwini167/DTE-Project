@@ -10,12 +10,8 @@ import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.orm.hibernate4.HibernateTransactionManager;
 import org.springframework.orm.hibernate4.LocalSessionFactoryBuilder;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
-
 import com.niit.dao.*;
-import com.niit.model.Category;
-import com.niit.model.Product;
-import com.niit.model.Supplier;
-import com.niit.model.UserDetail;
+import com.niit.model.*;
 
 @Configuration
 @ComponentScan("com.niit")
@@ -27,6 +23,7 @@ public class DBConfig {
 	}
 	
 	/* Method used to set the parameters for H2 connectivity */
+	@Bean(name="dataSource")
 	public DataSource getH2DataSource() {
 		DriverManagerDataSource dataSource=new DriverManagerDataSource();
 		dataSource.setDriverClassName("org.h2.Driver");
@@ -44,12 +41,14 @@ public class DBConfig {
 		
 		hibernateProp.setProperty("hibernate.hbm2ddl.auto", "update");
 		hibernateProp.put("hibernate.dialect","org.hibernate.dialect.H2Dialect");
+		hibernateProp.setProperty("hibernate.show_sql", "true");
 		
 		LocalSessionFactoryBuilder factoryBuilder=new LocalSessionFactoryBuilder(getH2DataSource());
 		factoryBuilder.addAnnotatedClass(Category.class);
 		factoryBuilder.addAnnotatedClass(Product.class);
 		factoryBuilder.addAnnotatedClass(UserDetail.class);
 		factoryBuilder.addAnnotatedClass(Supplier.class);
+		factoryBuilder.addAnnotatedClass(CartItem.class);
 		factoryBuilder.addProperties(hibernateProp);
 		
 		System.out.println("Creating SessionFactory Bean");
@@ -58,8 +57,7 @@ public class DBConfig {
 	
 	/* Method to create the bean of CategoryDAO */
 	@Bean(name="categoryDAO")
-	public CategoryDAO getCategoryDAO()
-	{
+	public CategoryDAO getCategoryDAO()	{
 		System.out.println("----CategoryDAO bean creation---");
 		return new CategoryDAOImpl();
 	}
@@ -87,10 +85,15 @@ public class DBConfig {
 	
 	/* Method to create the bean of TransactionManager */
 	@Bean(name="txManager")
-	public HibernateTransactionManager getTransactionManager(SessionFactory sessionFactory)
-	{
+	public HibernateTransactionManager getTransactionManager(SessionFactory sessionFactory) {
 		System.out.println("---Transaction Manager----");
 		return new HibernateTransactionManager(sessionFactory);
 	}
 	
+	/* Method to create the bean of CartItemDAO */
+	@Bean(name="cartItemDAO")
+	public CartItemDAO getCartItemDAO()	{
+		System.out.println("----CartItemDAO bean creation---");
+		return new CartItemDAOImpl();
+	}
 }

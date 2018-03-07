@@ -13,8 +13,7 @@ public class ProductUnitTest {
 	static ProductDAO productDAO;
 
 	@BeforeClass
-	public static void executeFirst()
-	{
+	public static void executeFirst() {
 		AnnotationConfigApplicationContext context=new AnnotationConfigApplicationContext();
 		context.scan("com.niit");
 		context.refresh();
@@ -34,12 +33,12 @@ public class ProductUnitTest {
 		product.setStock(2);
 		assertTrue("Problem in Product Insertion",productDAO.addProduct(product));
 	}	
-	@Ignore
+	
 	@Test
 	public void viewProductTest()
 	{
 		assertNotNull("Problem in get Product",productDAO.viewProduct(2));
-		Product product = productDAO.viewProduct(2);
+		Product product = productDAO.viewProduct(1);
 		System.out.println("Product ID: "+product.getProductId());
 		System.out.println("Product Name: "+product.getProductName());
 		System.out.println("Product Desc: "+product.getProdDesc());
@@ -63,7 +62,7 @@ public class ProductUnitTest {
 		assertTrue("Problem in Product updation",productDAO.updateProduct(product));		
 	}
 	
-	
+	@Ignore
 	@Test
 	public void listProductTest() {
 		assertNotNull("Problem in listing all Product",productDAO.listProducts());
