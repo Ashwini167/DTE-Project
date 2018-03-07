@@ -1,7 +1,13 @@
 package com.niit.controller;
 
+import java.util.Collection;
 import java.util.List;
+import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.context.SecurityContext;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -21,6 +27,45 @@ public class UserDetailController {
 		List<UserDetail> userList = userDetailDAO.listUserDetails();
 		m.addAttribute("userList", userList);
 		return "viewUsersList";
+	}
+	
+	@RequestMapping("/login_success")
+	public String showSuccessPage(HttpSession session, Model m) {
+		String page="";
+		boolean loggedIn = false;
+		
+		SecurityContext securityContext = SecurityContextHolder.getContext();
+		Authentication authentication = securityContext.getAuthentication();
+		String username = authentication.getName();
+		UserDetail userFromDB;
+		
+		Collection<GrantedAuthority> rolesList = (Collection<GrantedAuthority>)securityContext.getAuthentication().getAuthorities();
+		
+		for(GrantedAuthority role: rolesList) {
+			session.setAttribute("role", role);
+			if(role.getAuthority().equals("ROLE_ADMIN")) {
+				loggedIn = true;
+				page = "adminHome";
+				userFromDB = userDetailDAO.viewUserDetailByUsername(username);
+				session.setAttribute("nameOfUser", userFromDB.getName());
+				session.setAttribute("username", username);
+				session.setAttribute("loggedIn", loggedIn);
+			}
+			else {
+				loggedIn = true;
+				page = "userHome";
+				userFromDB = userDetailDAO.viewUserDetailByUsername(username);
+				session.setAttribute("nameOfUser", userFromDB.getName());
+				session.setAttribute("username", username);
+				session.setAttribute("loggedIn", loggedIn);
+			}				
+		}		
+		return page;
+	}
+	
+	@RequestMapping("/modifyUserDetail")
+	public String editUserDetail() {
+		return "index";
 	}
 	
 	@RequestMapping(value="/editUser/{username}", method=RequestMethod.GET)
@@ -87,36 +132,4 @@ public class UserDetailController {
 		m.addAttribute("userList", userList);
 		return "viewUsersList";
 	}
-	
-	@RequestMapping(value="/signIn",method=RequestMethod.POST)
-	public String checkLoginCredentials(@ModelAttribute("user") UserDetail userDetail,Model m) {
-		String enteredValue = userDetail.getUsername();
-		String password = userDetail.getPassword();
-		UserDetail userFromDB = null;
-		
-		if(enteredValue.contains("@"))
-			userFromDB = userDetailDAO.viewUserDetailByEmail(enteredValue);
-		else
-			userFromDB = userDetailDAO.viewUserDetailByUsername(enteredValue);
-		
-		String message = null;
-		if(userFromDB==null) {
-			message = "No such user exists. Please check your user ID/Email or Sign up";
-			m.addAttribute("user", userDetail);
-			m.addAttribute("message", message);
-			return "Login";
-		}
-		else {
-			if(!(userFromDB.getPassword().equals(password))) {
-				message = "Password is incorrect. Please try again!";
-				m.addAttribute("user", userDetail);
-				m.addAttribute("message", message);
-				return "Login";
-			}
-			else {
-				m.addAttribute("username",userFromDB.getName());
-				return "index";
-			}				
-		}
-	}	
 }

@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import com.niit.dao.CategoryDAO;
 import com.niit.dao.ProductDAO;
+import com.niit.model.CartItem;
 import com.niit.model.Category;
 import com.niit.model.Product;
 
@@ -138,6 +139,8 @@ public class ProductController {
 	@RequestMapping(value="/viewProductDetail/{productId}",method=RequestMethod.GET)
 	public String viewProductDetail(@PathVariable("productId") int productId, Model m) {
 		Product product = productDAO.viewProduct(productId);
+		CartItem cartItem = new CartItem();
+		m.addAttribute("cart", cartItem);
 		m.addAttribute("product", product);
 		LinkedHashMap<Integer,String> quantityMap = new LinkedHashMap<Integer,String>();
 		for(int i=1;i<=product.getStock();i++)

@@ -25,10 +25,10 @@
 	    <div class="panel-body">
 	    <p><strong>Browse by categories:</strong></p>
 	    <p style="padding-bottom:15px;">
-	    	<a href="#" class="btn btn-info" role="button">All</a>&nbsp;&nbsp;&nbsp;&nbsp;
+	    	<a href="#" class="btn btn-primary btn-sm" role="button">All</a>&nbsp;&nbsp;&nbsp;&nbsp;
 	    	<c:forEach items="${catList}" var="category">
 	    		<c:set var="catIdFromList" value="${category.key}"></c:set>
-	   			<a class="btn btn-info" role="button" data-toggle="collapse" href="#<c:out value="${catIdFromList}"/>" aria-expanded="false" aria-controls="collapseExample">${category.value}</a>&nbsp;&nbsp;&nbsp;&nbsp;
+	   			<a class="btn-primary btn-sm" role="button" data-toggle="collapse" href="#<c:out value="${catIdFromList}"/>" aria-expanded="false" aria-controls="collapseExample">${category.value}</a>&nbsp;&nbsp;&nbsp;&nbsp;
 	   		</c:forEach>
 	   	</p>
 	   	<c:forEach items="${catList}" var="category">
@@ -47,7 +47,7 @@
 							<h3><a href="viewProductDetail/${product.productId}">${product.productName}</a></h3>
 							<p>${product.prodDesc}</p>
 							<p><b>Rs.&nbsp;${product.price}/-</b></p>
-							<p><a href="#" class="btn btn-success" role="button">Add to cart</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#" class="btn btn-warning" role="button">Add to wishlist</a></p>	
+							<p><a href="viewProductDetail/${product.productId}" class="btn btn-success" role="button">Buy now</a></p>	
 						</div>
 					</div>
 				  </div>

@@ -6,7 +6,7 @@
 	<title>Shopping Cart</title>
 </head>
 <body class="bg">
-	<div class="container">
+	<div class="container-fluid">
 		<div class="panel panel-success">
 			<div class="panel-heading">
               	<div class="panel-title">Welcome, ${username}!</div>			
@@ -52,6 +52,8 @@
 				</div>
 			</div>
 		</div>
+		</div>
+		<div class="container">
 		<div class="panel panel-success">
 			<div class="panel-heading">
 				<div class="panel-title">Explore our products from various categories</div>

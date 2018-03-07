@@ -1,12 +1,24 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
+	<%@taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
+	<%@include file="header.jsp" %>
+	<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+	<title>Welcome!</title>
 </head>
-<body>
-
+<body class="bg">
+	<div class="container">    
+        <div id="loginbox" class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2 margin50">                    
+            <div class="panel panel-success" >
+                    <div class="panel-heading">
+                        <div class="panel-title">Sign In</div>
+                    </div>  
+                    <div class="panel-body" style="padding-top:30px">
+                    	<c:if test="${sessionScope.role=='ROLE_USER'}">
+                    		Change Header.jsp also accordingly.
+                    	</c:if>
+                    </div>
+              </div>
+       	</div>
+	</div>
 </body>
 </html>
