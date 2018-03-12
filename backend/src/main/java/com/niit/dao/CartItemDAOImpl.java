@@ -61,6 +61,7 @@ public class CartItemDAOImpl implements CartItemDAO {
 		try {
 			Session session = sessionFactory.openSession();
 			CartItem cartItem = (CartItem)session.get(CartItem.class, cartItemId);
+			session.close();
 			return cartItem;
 		}
 		catch(Exception e) {
@@ -72,11 +73,35 @@ public class CartItemDAOImpl implements CartItemDAO {
 
 	@Override
 	public List<CartItem> listCartItems(String username) {
-		Session session = sessionFactory.openSession();
-		Query query = session.createQuery("from CartItem where username=:username and paymentStatus='NP'");
-		query.setParameter("username", username);
-		List<CartItem> listCartItem = (List<CartItem>)query.list();
-		return listCartItem;
+		try {
+			Session session = sessionFactory.openSession();
+			Query query = session.createQuery("from CartItem where username=:username and paymentStatus='NP'");
+			query.setParameter("username", username);
+			List<CartItem> listCartItem = (List<CartItem>)query.list();
+			session.close();
+			return listCartItem;
+		} catch(Exception e) {
+			System.out.println("There is an exception here! The details are: \n =================================");
+			System.out.println(e);
+			return null;
+		}
+	}
+
+	@Override
+	public List<CartItem> getCartItemByCartId(String username,int cartId) {
+		try {
+			Session session = sessionFactory.openSession();
+			Query query = session.createQuery("from CartItem where username=:username and cartId:=cartId");
+			query.setParameter("username", username);
+			query.setParameter("cartId", cartId);
+			List<CartItem> listCartItems = (List<CartItem>)query.list();
+			session.close();
+			return listCartItems;
+		} catch(Exception e) {
+			System.out.println("There is an exception here! The details are: \n =================================");
+			System.out.println(e);
+			return null;
+		}
 	}
 
 }

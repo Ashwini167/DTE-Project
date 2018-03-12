@@ -26,7 +26,7 @@ public class SupplierUnitTest {
 	@Test
 	public void addSupplierTest() {
 		Supplier supplier = new Supplier();
-		supplier.setSupplierId("S1005");
+		supplier.setSupplierId(104);
 		supplier.setSupplierName("Theon Greyjoy");
 		supplier.setSupplierMobileNo("9003925123");
 		assertTrue("Problem in adding supplier",supplierDAO.addSupplier(supplier));
@@ -35,7 +35,7 @@ public class SupplierUnitTest {
 	@Ignore
 	@Test
 	public void updateSupplierTest() {
-		Supplier supplier = supplierDAO.viewSupplier("S1002");
+		Supplier supplier = supplierDAO.viewSupplier(104);
 		supplier.setSupplierName("Cateline Stark");
 		assertTrue("Problem in updating supplier",supplierDAO.updateSupplier(supplier));
 	}
@@ -43,16 +43,16 @@ public class SupplierUnitTest {
 	@Ignore
 	@Test
 	public void deleteSupplierTest() {
-		Supplier supplier = supplierDAO.viewSupplier("S1005");
+		Supplier supplier = supplierDAO.viewSupplier(105);
 		assertTrue("Problem in deleting supplier details",supplierDAO.deleteSupplier(supplier));
 	}
 	@Ignore
 	@Test
 	public void viewSupplierTest() {
-		assertNotNull("Problem in viewing the supplier details", supplierDAO.viewSupplier("S1003"));
-		System.out.println("Supplier ID is "+supplierDAO.viewSupplier("S1003").getSupplierId());
-		System.out.println("Supplier Name is "+supplierDAO.viewSupplier("S1003").getSupplierName());
-		System.out.println("Supplier Mobile is "+supplierDAO.viewSupplier("S1003").getSupplierMobileNo());
+		assertNotNull("Problem in viewing the supplier details", supplierDAO.viewSupplier(103));
+		System.out.println("Supplier ID is "+supplierDAO.viewSupplier(103).getSupplierId());
+		System.out.println("Supplier Name is "+supplierDAO.viewSupplier(103).getSupplierName());
+		System.out.println("Supplier Mobile is "+supplierDAO.viewSupplier(103).getSupplierMobileNo());
 	}
 	
 	

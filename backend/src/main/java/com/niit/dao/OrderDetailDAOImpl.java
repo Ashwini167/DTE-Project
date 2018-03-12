@@ -7,49 +7,33 @@ import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
-import com.niit.model.Product;
+import com.niit.model.OrderDetail;
 
-@Repository("productDAO")
-public class ProductDAOImpl implements ProductDAO{
+@Repository("orderDetailDAO")
+public class OrderDetailDAOImpl implements OrderDetailDAO {
 	@Autowired
 	SessionFactory sessionFactory;
 	
 	@Transactional
 	@Override
-	public boolean addProduct(Product product) {
+	public int addOrder(OrderDetail orderDetail) {
 		try {
-			sessionFactory.getCurrentSession().save(product);
-			return true;
-		}
-		catch(Exception e) {
+			int orderId = (int) sessionFactory.getCurrentSession().save(orderDetail);
+			return orderId;
+		}catch(Exception e) {
 			System.out.println("There is an exception here! The details are: \n =================================");
 			System.out.println(e);
-			return false;
-		}		
+			return 0;
+		}
 	}
 
+	/*@Transactional
 	@Override
-	public Product viewProduct(int productId) {
-		try { 
-			Session session=sessionFactory.openSession();
-			Product product=(Product)session.get(Product.class,productId);
-			session.close();
-			return product;
-		} catch(Exception e) {
-			System.out.println("There is an exception here! The details are: \n =================================");
-			System.out.println(e);
-			return null;
-		}
-	}
-	
-	@Transactional
-	@Override
-	public boolean deleteProduct(Product product) {
+	public boolean updateOrder(OrderDetail orderDetail) {
 		try {
-			sessionFactory.getCurrentSession().delete(product);
+			sessionFactory.getCurrentSession().update(orderDetail);
 			return true;
-		}
-		catch(Exception e) {
+		}catch(Exception e) {
 			System.out.println("There is an exception here! The details are: \n =================================");
 			System.out.println(e);
 			return false;
@@ -58,31 +42,44 @@ public class ProductDAOImpl implements ProductDAO{
 	
 	@Transactional
 	@Override
-	public boolean updateProduct(Product product) {
+	public boolean deleteOrder(OrderDetail orderDetail) {
 		try {
-			sessionFactory.getCurrentSession().update(product);
+			sessionFactory.getCurrentSession().delete(orderDetail);
 			return true;
-		}
-		catch(Exception e) {
+		}catch(Exception e) {
 			System.out.println("There is an exception here! The details are: \n =================================");
 			System.out.println(e);
 			return false;
 		}
-	}
+	}*/
 
 	@Override
-	public List<Product> listProducts() {
+	public OrderDetail getOrder(int orderId) {
 		try {
 			Session session = sessionFactory.openSession();
-			Query query = session.createQuery("from Product");
-			List<Product> listProducts = (List<Product>)query.list();
+			OrderDetail orderDetail = (OrderDetail)session.get(OrderDetail.class, orderId);
 			session.close();
-			return listProducts;
-		} catch(Exception e) {
+			return orderDetail;
+		}catch(Exception e) {
 			System.out.println("There is an exception here! The details are: \n =================================");
 			System.out.println(e);
 			return null;
 		}
 	}
 
+	@Override
+	public List<OrderDetail> orderList(String username) {
+		try {
+			Session session = sessionFactory.openSession();
+			Query query = session.createQuery("from OrderDetail where username=:username");
+			query.setParameter("username",username);
+			List<OrderDetail> orderList = (List<OrderDetail>)query.list() ;
+			session.close();
+			return orderList;
+		}catch(Exception e) {
+			System.out.println("There is an exception here! The details are: \n =================================");
+			System.out.println(e);
+			return null;
+		}		
+	}
 }

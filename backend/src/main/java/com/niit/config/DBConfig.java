@@ -49,6 +49,7 @@ public class DBConfig {
 		factoryBuilder.addAnnotatedClass(UserDetail.class);
 		factoryBuilder.addAnnotatedClass(Supplier.class);
 		factoryBuilder.addAnnotatedClass(CartItem.class);
+		factoryBuilder.addAnnotatedClass(OrderDetail.class);
 		factoryBuilder.addProperties(hibernateProp);
 		
 		System.out.println("Creating SessionFactory Bean");
@@ -96,4 +97,12 @@ public class DBConfig {
 		System.out.println("----CartItemDAO bean creation---");
 		return new CartItemDAOImpl();
 	}
+	
+	/* Method to create the bean of OrderDetailDAO */
+	@Bean(name="orderDetailDAO")
+	public OrderDetailDAO getOrderDetailDAO()	{
+		System.out.println("----OrderDetailDAO bean creation---");
+		return new OrderDetailDAOImpl();
+	}
+	
 }

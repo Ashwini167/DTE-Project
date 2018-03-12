@@ -8,14 +8,14 @@ import javax.persistence.Table;
 @Table
 public class Supplier {
 	@Id
-	private String supplierId;
+	private int supplierId;
 	private String supplierName;
 	private String supplierMobileNo;
-	
-	public String getSupplierId() {
+		
+	public int getSupplierId() {
 		return supplierId;
 	}
-	public void setSupplierId(String supplierId) {
+	public void setSupplierId(int supplierId) {
 		this.supplierId = supplierId;
 	}
 	public String getSupplierName() {

@@ -9,5 +9,6 @@ public interface CartItemDAO {
 	public boolean deleteCartItem(CartItem cartItem);
 	public boolean updateCartItem(CartItem cartItem);
 	public CartItem getCartItem(int cartItemId);
+	public List<CartItem> getCartItemByCartId(String username,int cartId);
 	public List<CartItem> listCartItems(String username);	
 }
