@@ -4,45 +4,44 @@
 	<%@include file="header.jsp" %>	
 	<title>Update Category</title>	
 	<style>
-	.panel-success>.panel-heading {
-	    font-weight: bold;
-	    color: #ffffff;
-	    background-color: #5cb85c;
-	    border-color: #4cae4c;
-	}
-	.tableTextvAlign {
-	vertical-align:middle!important;
+	.bg { 
+    	background-image: url("../resources/images/bgImages/Final.jpg");
+    	height: 100%; 
+    	background-position: center;
+    	background-repeat:repeat-y;
+    	background-size: cover;
 	}
 	</style>	
 </head>
 <body class="bg">
 <div class="container">
-<form action="<c:url value="/updateCategory" />" method="post">
+<form action="<c:url value="/updateCategory" />" method="post" class="form-horizontal">
   <div id="loginbox" class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2 margin50">                    
             <div class="panel panel-success" >
                     <div class="panel-heading">
                         <div class="panel-title">Update Category</div>
                     </div>
-					<div class="panel-body" style="height:190px;">	
-						<table class="table table-hover table-condensed table-responsive">	
-							<tr>
-								<td class="active">Category ID</td>
-								<td>		
-								<input type="text" id="catId" readonly name="catId" value="${categoryInfo.categoryId}"/>
-								</td>
-							</tr>
-							<tr>
-								<td class="active">Category Name</td>
-								<td><input type="text" id="catname" name="catname" value="${categoryInfo.categoryName}"/></td>
-							</tr>
-							<tr>
-								<td class="active">Category Description</td>
-								<td><input type="text" id="catDesc" name="catDesc" value="${categoryInfo.categoryDesc}"/></td>
-							</tr>	
-							<tr>
-								<td colspan="2" align="center" style="padding-top:15px"><input type="submit" value="Update" class="btn btn-success"/></td>
-							</tr>
-						</table>
+					<div class="panel-body" style="height:250px;">	
+						<label for="catId" class="col-md-3 control-label">Category ID</label>
+						<div style="margin-bottom: 25px" class="input-group">								
+								<span class="input-group-addon"><i class="glyphicon glyphicon-info-sign"></i></span>		
+								<input type="text" id="catId" class="form-control" readonly="readonly" name="catId" value="${categoryInfo.categoryId}"/>
+						</div>
+						<label for="catname" class="col-md-3 control-label">Category Name</label>
+						<div style="margin-bottom: 25px" class="input-group">
+								<span class="input-group-addon"><i class="glyphicon glyphicon-book"></i></span>	
+								<input type="text" id="catname" class="form-control" name="catname" value="${categoryInfo.categoryName}"/>
+						</div>
+						<label for="catDesc" class="col-md-3 control-label">Category Description</label>
+						<div style="margin-bottom: 25px" class="input-group">
+								<span class="input-group-addon"><i class="glyphicon glyphicon-align-justify"></i></span>	
+								<input type="text" id="catDesc" class="form-control" name="catDesc" value="${categoryInfo.categoryDesc}"/>
+						</div>
+						<div style="margin-top:10px;" class="form-group">
+							<div class="col-sm-12 controls">		
+								<input type="submit" value="Update" class="btn btn-success btnAlign"/>
+							</div>
+						</div>	
 					</div>
 			</div>
 	</div>
@@ -76,5 +75,6 @@
 	</div>
 </div>
 </div>
+<%@include file="footer.jsp" %>
 </body>
 </html>

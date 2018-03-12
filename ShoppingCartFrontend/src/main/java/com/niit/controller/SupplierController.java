@@ -41,7 +41,7 @@ public class SupplierController {
 	}
 	
 	@RequestMapping(value="/editSupplierDetails/{supplierId}", method=RequestMethod.GET)
-	public String editSupplierDetails(@PathVariable("supplierId")String supplierId, Model m) {
+	public String editSupplierDetails(@PathVariable("supplierId")int supplierId, Model m) {
 		Supplier supplier = supplierDAO.viewSupplier(supplierId);
 		m.addAttribute("supplier", supplier);
 		return "updateSupplier";
@@ -56,7 +56,7 @@ public class SupplierController {
 	}
 	
 	@RequestMapping(value="/deleteSupplierDetails/{supplierId}", method=RequestMethod.GET)
-	public String deleteSupplierDetails(@PathVariable("supplierId")String supplierId, Model m) {
+	public String deleteSupplierDetails(@PathVariable("supplierId")int supplierId, Model m) {
 		Supplier supplier = supplierDAO.viewSupplier(supplierId);
 		supplierDAO.deleteSupplier(supplier);
 		List<Supplier> supplierList = supplierDAO.listSuppliers();

@@ -14,13 +14,18 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+
+import com.niit.dao.CategoryDAO;
 import com.niit.dao.UserDetailDAO;
+import com.niit.model.Category;
 import com.niit.model.UserDetail;
 
 @Controller
 public class UserDetailController {
 	@Autowired
 	UserDetailDAO userDetailDAO;
+	@Autowired
+	CategoryDAO categoryDAO;
 	
 	@RequestMapping("/viewUsersList")
 	public String listUsers(Model m) {
@@ -50,22 +55,21 @@ public class UserDetailController {
 				session.setAttribute("nameOfUser", userFromDB.getName());
 				session.setAttribute("username", username);
 				session.setAttribute("loggedIn", loggedIn);
+				session.setAttribute("userType", "admin");
 			}
 			else {
 				loggedIn = true;
-				page = "userHome";
+				page = "index";
 				userFromDB = userDetailDAO.viewUserDetailByUsername(username);
 				session.setAttribute("nameOfUser", userFromDB.getName());
 				session.setAttribute("username", username);
 				session.setAttribute("loggedIn", loggedIn);
+				session.setAttribute("userType", "user");
+				List<Category> listCategories = categoryDAO.listCategory();
+				m.addAttribute("listCategories", listCategories);
 			}				
 		}		
 		return page;
-	}
-	
-	@RequestMapping("/modifyUserDetail")
-	public String editUserDetail() {
-		return "index";
 	}
 	
 	@RequestMapping(value="/editUser/{username}", method=RequestMethod.GET)
@@ -76,15 +80,21 @@ public class UserDetailController {
 	}
 	
 	@RequestMapping(value="/editUserDetails", method=RequestMethod.POST)
-	public String updateUserDetails(@ModelAttribute("user")UserDetail userDetail, Model m) {
+	public String updateUserDetails(@ModelAttribute("user")UserDetail userDetail, Model m, HttpSession session) {
 		System.out.println("Inside update User Details method");
 		System.out.println("User Name from the form is "+userDetail.getUsername());
 		userDetailDAO.updateUserDetail(userDetail);		
 		
 		List<UserDetail> userList = userDetailDAO.listUserDetails();
 		m.addAttribute("userList", userList);
-		
-		return "viewUsersList";
+		String userType = (String)session.getAttribute("userType");
+		if(userType.equals("admin"))
+			return "viewUsersList";
+		else {
+			List<Category> listCategories = categoryDAO.listCategory();
+			m.addAttribute("listCategories", listCategories);
+			return "index";
+		}
 	}
 	
 	@RequestMapping(value="/addUserDetail",method=RequestMethod.POST)
@@ -116,11 +126,13 @@ public class UserDetailController {
 			m.addAttribute("user", userDetail);
 			return "Register";
 		} else {
+			userDetail.setEnabled(true);
+			userDetail.setRole("ROLE_USER");
 			userDetailDAO.addUserDetail(userDetail);
 			System.out.println("New User Added!");
-			List<UserDetail> userList = userDetailDAO.listUserDetails();
-			m.addAttribute("userList", userList);
-			return "viewUsersList";
+			List<Category> listCategories = categoryDAO.listCategory();
+			m.addAttribute("listCategories", listCategories);
+			return "index";
 		}		
 	}
 	

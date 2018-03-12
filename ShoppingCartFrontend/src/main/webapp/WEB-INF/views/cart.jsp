@@ -1,9 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
 <%@include file="header.jsp" %>
@@ -27,6 +23,12 @@
 		<div class="panel-heading">
         	<div class="panel-title">Your Cart</div>
         </div>
+        <div class="panel-body">
+        <c:if test="${empty cartList}">
+        	<h3 align="center">Your Cart is empty!</h3>
+        	<a style="align:center;" href="viewProducts" class="btn btn-primary" role="button">Continue Shopping</a>        
+        </c:if>
+        <c:if test="${not empty cartList}">
 		<c:url value="/confirmOrder" var="actionString"></c:url>
 		<form:form action="${actionString}">
 			<table class="table table-hover table-condensed" style="width: 90%;">				
@@ -61,11 +63,14 @@
 					</tr>
 				</c:forEach>
 					<tr align="right">
-					<td colspan="3" align="right"><input type="button" value="Proceed to checkout" class="btn btn-lg btn-primary"/></td>
+					<td colspan="3" align="right"><input type="submit" value="Proceed to checkout" class="btn btn-lg btn-primary"/></td>
 					</tr>
 			</table>
 		</form:form>
+		</c:if>
 	</div>
 	</div>
+	</div>
+	<%@include file="footer.jsp" %>
 </body>
 </html>

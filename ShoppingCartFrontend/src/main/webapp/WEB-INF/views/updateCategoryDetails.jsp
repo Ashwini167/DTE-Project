@@ -2,7 +2,7 @@
 <head>
 	<%@include file="header.jsp" %>
 	<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>	
-	<title>Add Category</title>
+	<title>View Categories</title>
 </head>
 <body class="bg">
 <div class="container">
@@ -36,5 +36,6 @@
 	</div>
 </div>
 </div>
+<%@include file="footer.jsp" %>
 </body>
 </html>

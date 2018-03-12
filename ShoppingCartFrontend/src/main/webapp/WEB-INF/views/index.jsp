@@ -9,7 +9,7 @@
 	<div class="container-fluid">
 		<div class="panel panel-success">
 			<div class="panel-heading">
-              	<div class="panel-title">Welcome, ${username}!</div>			
+              	<div class="panel-title">Welcome, ${nameOfUser}!</div>			
 			</div>
 			<div class="panel-body">
 				<div id="myCarousel" class="carousel slide" data-ride="carousel">
@@ -68,7 +68,7 @@
 								<h3>${category.categoryName}</h3>
 								<p>${category.categoryDesc}</p>
 								<p>
-									<a href="viewProducts" class="btn btn-warning" role="button">Explore More</a> 
+									<a href="exploreProducts" class="btn btn-warning" role="button">Explore More</a> 
 								</p>
 							</div>
 						</div>
@@ -79,5 +79,6 @@
 			</div>
 		</div>
 	</div>
+	<%@include file="footer.jsp" %>
 </body>
 </html>

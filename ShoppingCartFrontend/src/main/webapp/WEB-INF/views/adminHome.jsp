@@ -19,7 +19,7 @@
 <body class="bg">
 	<div class="container">
 		<div class="panel panel-success">
-			<div class="panel-heading success">Welcome back ${nameOfUser}! Please choose one of the options
+			<div class="panel-heading success">Welcome back <b>${nameOfUser}!</b> Please choose one of the options
 					from the below actions.</div>
 			<div class="panel-body">
 			<div class="media">
@@ -31,9 +31,9 @@
 				<div class="media-body">
 					<h4 class="media-heading">Manage Categories</h4>
 					<div class="list-group">
-						<a href="" class="list-group-item">View available categories</a> 
-						<a href="" class="list-group-item">Add new category</a> 
-						<a href="" class="list-group-item">Update/delete categories</a>
+						<a href="updateCategoryDetails" class="list-group-item">View available categories</a> 
+						<a href="addCategory" class="list-group-item">Add new category</a> 
+						<a href="updateCategoryDetails" class="list-group-item">Update/delete categories</a>
 					</div>
 				</div>
 			</div>
@@ -47,8 +47,8 @@
 				<div class="media-body">
 					<h4 class="media-heading">Manage Products</h4>
 					<div class="list-group">
-						<a href="" class="list-group-item">Add New Product</a> 
-						<a href="" class="list-group-item">Modify (Update/Delete) product details</a>
+						<a href="addProduct" class="list-group-item">Add New Product</a> 
+						<a href="updateProduct" class="list-group-item">Modify (Update/Delete) product details</a>
 					</div>
 				</div>
 			</div>
@@ -62,7 +62,7 @@
 				<div class="media-body">
 					<h4 class="media-heading">Manage Users</h4>
 					<div class="list-group">
-						<a href="" class="list-group-item">View/Modify User List</a>
+						<a href="viewUsersList" class="list-group-item">View/Modify User List</a>
 					</div>
 				</div>
 			</div>
@@ -76,13 +76,15 @@
 				<div class="media-body">
 					<h4 class="media-heading">Manage Suppliers</h4>
 					<div class="list-group">
-						<a href="" class="list-group-item">View Supplier Details</a> 
-						<a href="" class="list-group-item">Modify (Update/Delete) Supplier details</a>
+						<a href="viewSupplierAddPage" class="list-group-item">Add New Supplier</a>
+						<a href="viewSupplierDetails" class="list-group-item">View Supplier Details</a> 
+						<a href="viewSupplierDetails" class="list-group-item">Modify (Update/Delete) Supplier details</a>
 					</div>
 				</div>
 			</div>
 			</div>
 		</div>
 	</div>
+	<%@include file="footer.jsp" %>
 </body>
 </html>

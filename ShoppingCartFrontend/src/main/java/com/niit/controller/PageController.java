@@ -2,6 +2,8 @@ package com.niit.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -16,17 +18,34 @@ public class PageController {
 	CategoryDAO categoryDAO;
 	
 	@RequestMapping("/")
-	public String showHomePage(Model m) {
+	public String showHomePage(HttpSession session, Model m) {
 		List<Category> listCategories = categoryDAO.listCategory();
 		m.addAttribute("listCategories", listCategories);
-		m.addAttribute("username", "Guest");
+		String username = (String)session.getAttribute("username");
+		if(username!=null) {
+			m.addAttribute("nameOfUser", (String)session.getAttribute("nameOfUser"));
+			m.addAttribute("username",username);
+		}
+		else {
+			m.addAttribute("nameOfUser", "Guest");
+			m.addAttribute("username", "Guest");
+		}
 		return "index";
 	}
+	
 	@RequestMapping("/home")
-	public String showHome(Model m) {
+	public String showHome(HttpSession session, Model m) {
 		List<Category> listCategories = categoryDAO.listCategory();
 		m.addAttribute("listCategories", listCategories);
-		m.addAttribute("username", "Guest");
+		String username = (String)session.getAttribute("username");
+		if(username!=null) {
+			m.addAttribute("nameOfUser", (String)session.getAttribute("nameOfUser"));
+			m.addAttribute("username",username);
+		}
+		else {
+			m.addAttribute("nameOfUser", "Guest");
+			m.addAttribute("username", "Guest");
+		}
 		return "index";
 	}	
 	@RequestMapping("/login")
@@ -48,5 +67,10 @@ public class PageController {
 	@RequestMapping("/contactus")
 	public String showContactUs() {
 		return "contactUs";
+	}
+	
+	@RequestMapping("/exploreProducts")
+	public String showExploreProductsPage() {
+		return "exploreProducts";
 	}
 }

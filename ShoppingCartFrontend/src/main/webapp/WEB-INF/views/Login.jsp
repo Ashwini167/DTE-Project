@@ -11,7 +11,7 @@
             <div class="panel panel-success" >
                     <div class="panel-heading">
                         <div class="panel-title">Sign In</div>
-                        <div class="toFloat"><a href="#">Forgot password?</a></div>
+                        <div class="toFloat"><a href="contactus">Forgot password?</a></div>
                     </div>     
 
                     <div style="padding-top:30px" class="panel-body">
@@ -54,5 +54,6 @@
             </div>  
         </div>
     </div>
+    <%@include file="footer.jsp" %>
 </body>
 </html>

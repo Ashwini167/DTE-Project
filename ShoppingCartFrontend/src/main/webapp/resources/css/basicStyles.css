@@ -1,14 +1,17 @@
-@charset "ISO-8859-1";
-
 .margin50 {
 	margin-top:50px;
 }
 
 .panel-success>.panel-heading {
-    font-weight: bold;
+   
     color: #ffffff;
     background-color: #5cb85c;
     border-color: #4cae4c;
+    font-family: 'Handlee', cursive;
+}
+
+.panel-body {
+	font-family: 'Amaranth', sans-serif;
 }
 
 .toFloat>a {
@@ -45,3 +48,10 @@ th {
     background-color: #eea236;
     border: 1px solid #e3e3e3;
     border-radius: 4px;
+}
+
+.btnAlign {
+	margin-left:auto;
+	margin-right:0px;
+	display:block;
+}

@@ -8,5 +8,6 @@
 </head>
 <body class="bg">
 <h3>Call us on 12344566 (Toll free) for any queries</h3>
+<%@include file="footer.jsp" %>
 </body>
 </html>

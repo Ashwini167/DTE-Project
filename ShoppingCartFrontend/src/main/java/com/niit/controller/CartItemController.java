@@ -30,8 +30,7 @@ public class CartItemController {
 		m.addAttribute("productDetails", this.getProductName(cartList));
 		m.addAttribute("cartList",cartList);
 		return "cart";
-	}
-	
+	}	
 	
 	@RequestMapping("/addToCart/{productId}")
 	public String addCartItem(@PathVariable("productId")int productId,@RequestParam("quantity")int quantity, Model m, HttpSession session) {

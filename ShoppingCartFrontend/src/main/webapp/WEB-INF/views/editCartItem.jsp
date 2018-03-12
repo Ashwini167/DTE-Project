@@ -14,14 +14,12 @@ function calculateSubTotal(price){
 </script>
 <title>Product Details</title>
 <style>
-	.panel-success>.panel-heading {
-	    font-weight: bold;
-	    color: #ffffff;
-	    background-color: #5cb85c;
-	    border-color: #4cae4c;
-	}
-	.tableTextvAlign {
-	vertical-align:middle!important;
+	.bg { 
+    	background-image: url("../resources/images/bgImages/Final.jpg");
+    	height: 100%; 
+    	background-position: center;
+    	background-repeat:repeat-y;
+    	background-size: cover;
 	}
 </style>
 </head>
@@ -68,5 +66,6 @@ function calculateSubTotal(price){
 			</form:form>
 </div>
 </div>
+<%@include file="footer.jsp" %>
 </body>
 </html>

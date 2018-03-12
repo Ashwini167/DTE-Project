@@ -6,31 +6,32 @@
 </head>
 <body class="bg">
 <div class="container">   
-<form action="<c:url value="/insertCategory" />" method="post"> 
-        <div id="loginbox" class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2 margin50">                    
-            <div class="panel panel-success" >
-                    <div class="panel-heading">
-                        <div class="panel-title">Add Category</div>
-                    </div>
-					<div class="panel-body" style="height:160px;">						
-							<table class="table table-hover table-condensed table-responsive">
-								<tr>
-									<td><label for="catname">Category Name:</label></td>
-									<td><input type="text" id="catname" name="catname" required/></td>
-								</tr>
-								<tr>	
-									<td><label for="catDesc">Category Description:</label></td>	
-									<td><input type="text" id="catDesc" name="catDesc" required/></td>
-								</tr>
-								<tr> 
-									<td align="right" style="padding-top:15px">	<input type="submit" value="Insert" class="btn btn-success" /></td>
-									<td align="left" style="padding-top:15px">	<input type="reset" value="Reset" class="btn btn-warning"/></td>
-								</tr>
-							</table>
-					</div>
+	<div id="loginbox" class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2 margin50">                    
+    	<div class="panel panel-success" >
+        	<div class="panel-heading">
+            	<div class="panel-title">Add New Category</div>
+            </div>
+			<div style="padding-top:30px" class="panel-body">
+			<form class="form-horizontal" action="<c:url value="/insertCategory" />" method="post">	
+			<div style="margin-bottom: 25px" class="input-group">					
+				<span class="input-group-addon"><i class="glyphicon glyphicon-book"></i></span>
+				<input class="form-control" type="text" id="catname" name="catname" placeholder="Enter Category Name" required/>
+			</div>		
+			<div style="margin-bottom: 25px" class="input-group">
+				<span class="input-group-addon"><i class="glyphicon glyphicon-align-justify"></i></span>
+				<input class="form-control" type="text" id="catDesc" name="catDesc" placeholder="Enter Category Description" required/>
+			</div>	
+			
+			<div style="margin-top:10px;" class="form-group">
+				<div class="col-sm-12 controls">
+                	<input type="submit" id="btn-login" class="btn btn-success icon-hand-right" value="Insert" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                	<input type="reset" id="btn-reset" class="btn btn-warning icon-hand-right" value="Reset" />                            
+                </div>
+			</div>				
+			</form>					
 			</div>
 		</div>
-	</form>
+	</div>
 	
 <div id="loginbox" class="mainbox col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2 margin50">
 	<div class="panel panel-success" >
@@ -63,5 +64,6 @@
 </div>	
 	
 </div>
+<%@include file="footer.jsp" %>
 </body>
 </html>
