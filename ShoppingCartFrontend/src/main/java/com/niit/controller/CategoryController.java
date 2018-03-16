@@ -77,6 +77,6 @@ public class CategoryController {
 		List<Category> listCategories = categoryDAO.listCategory();
 		m.addAttribute("listCategories", listCategories);
 		
-		return "addCategory";
+		return "updateCategoryDetails";
 	}	
 }

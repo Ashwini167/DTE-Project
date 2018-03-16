@@ -1,5 +1,6 @@
 package com.niit.controller;
 
+import java.util.LinkedHashMap;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -9,13 +10,17 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import com.niit.dao.CategoryDAO;
+import com.niit.dao.ProductDAO;
 import com.niit.model.Category;
+import com.niit.model.Product;
 import com.niit.model.UserDetail;
 
 @Controller
 public class PageController {
 	@Autowired
 	CategoryDAO categoryDAO;
+	@Autowired
+	ProductDAO productDAO;	
 	
 	@RequestMapping("/")
 	public String showHomePage(HttpSession session, Model m) {
@@ -54,23 +59,38 @@ public class PageController {
 		m.addAttribute("user", user);
 		return "Login";
 	}
-	@RequestMapping("/aboutus")
-	public String showAboutUs() {
-		return "AboutUs";
-	}
+	
 	@RequestMapping("/register")
 	public String showRegister(Model m) {
 		UserDetail user = new UserDetail();
 		m.addAttribute("user", user);
 		return "Register";
 	}
+	
 	@RequestMapping("/contactus")
 	public String showContactUs() {
 		return "contactUs";
 	}
 	
 	@RequestMapping("/exploreProducts")
-	public String showExploreProductsPage() {
-		return "exploreProducts";
+	public String showExploreProductsPage(HttpSession session, Model m) {
+		String username = (String)session.getAttribute("username");
+		if(username!=null) {
+			List<Product> listProducts = productDAO.listProducts();
+			m.addAttribute("listProducts", listProducts);
+			m.addAttribute("catList", this.listCategories());
+			return "viewProducts";
+		}
+		else
+			return "exploreProducts";
+	}
+	
+	public LinkedHashMap<Integer,String> listCategories() {
+		LinkedHashMap<Integer,String> catList = new LinkedHashMap<Integer,String>();
+		List<Category> listCategories = categoryDAO.listCategory();
+		for(Category category: listCategories) {
+			catList.put(category.getCategoryId(), category.getCategoryName());
+		}
+		return catList;
 	}
 }

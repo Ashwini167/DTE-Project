@@ -64,6 +64,7 @@ public class ProductController {
 		
 		List<Product> listProducts = productDAO.listProducts();
 		m.addAttribute("listProducts", listProducts);
+		m.addAttribute("catList", this.listCategories());
 		return "addProduct";
 	}
 	
@@ -98,8 +99,8 @@ public class ProductController {
 		else
 			System.out.println("Error in image upload");
 		List<Product> listProducts = productDAO.listProducts();
-		m.addAttribute("listProducts", listProducts);		
-		return "viewProducts";
+		m.addAttribute("listProducts", listProducts);
+		return "updateDeleteProduct";
 	}	
 	
 	public boolean saveImage(MultipartFile filedet, int productId) {
@@ -157,7 +158,6 @@ public class ProductController {
 		productDAO.deleteProduct(prod);				
 		List<Product> listProducts = productDAO.listProducts();
 		m.addAttribute("listProducts", listProducts);
-		m.addAttribute("catList", this.listCategories());
-		return "viewProducts";
+		return "updateDeleteProduct";
 	}	
 }

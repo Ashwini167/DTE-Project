@@ -19,28 +19,18 @@
 							<p>Error:</p>
 							<span></span>
 						</div>
-						
-						<div class="form-group">
-							<label for="supplierId" class="col-md-3 control-label">Supplier ID</label>
-							<div class="col-md-9">
-								<form:input cssClass="form-control" path="supplierId" />
-							</div>
+						<label for="supplierName" class="col-md-3 control-label">Name of the Supplier</label>
+						<div style="margin-bottom: 25px" class="input-group">								
+							<span class="input-group-addon"><i class="fa fa-truck"></i></span>
+							<form:input cssClass="form-control" path="supplierName" required="true"/>
 						</div>
-						
-						<div class="form-group">
-							<label for="fname" class="col-md-3 control-label">Name of the Supplier</label>
-							<div class="col-md-9">
-								<form:input cssClass="form-control" path="supplierName" />
-							</div>
+	
+						<label for="mobile" class="col-md-3 control-label">Mobile</label>
+						<div style="margin-bottom: 25px" class="input-group">								
+							<span class="input-group-addon"><i class="glyphicon glyphicon-earphone"></i></span>
+							<form:input cssClass="form-control" path="supplierMobileNo" required="true"/>
 						</div>
 					
-						<div class="form-group">
-							<label for="mobile" class="col-md-3 control-label">Mobile</label>
-							<div class="col-md-9">
-								<form:input cssClass="form-control" path="supplierMobileNo" />
-							</div>
-						</div>
-						
 						<div class="form-group">
 							<div class="col-md-offset-3 col-md-9">
 								<input type="submit" id="btn-signup" class="btn btn-success icon-hand-right" value="Add Supplier" />

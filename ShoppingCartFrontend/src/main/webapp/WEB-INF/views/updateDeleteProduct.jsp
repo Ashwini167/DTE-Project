@@ -24,7 +24,7 @@
 						<th>Stock</th>
 						<th>Category</th>
 						<th>Supplier ID</th>
-						<th>Action</th>
+						<th colspan="2">Action</th>
 					</tr>
 					</thead>
 					<tbody>
@@ -37,7 +37,8 @@
 						<td class="tableTextvAlign" align="right">${product.stock}</td>
 						<td class="tableTextvAlign" align="right">${product.categoryId}</td>
 						<td class="tableTextvAlign" align="center">${product.supplierId}</td>
-						<td><a href="<c:url value="editProduct/${product.productId}" />" class="btn btn-success" role="button">Edit</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="<c:url value="deleteProduct/${product.productId}" />" class="btn btn-warning" role="button">Delete</a></td>
+						<td><a href="<c:url value="editProduct/${product.productId}" />"><img src="resources/images/bgImages/edit.png" alt="Edit"/></a></td>
+						<td><a href="<c:url value="deleteProduct/${product.productId}" />" ><img src="resources/images/bgImages/delete.png" alt="Delete"/></a></td>
 					</tr>
 					</c:forEach>
 					</tbody>

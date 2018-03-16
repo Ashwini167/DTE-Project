@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-
 import com.niit.dao.CategoryDAO;
 import com.niit.dao.UserDetailDAO;
 import com.niit.model.Category;
@@ -130,9 +129,8 @@ public class UserDetailController {
 			userDetail.setRole("ROLE_USER");
 			userDetailDAO.addUserDetail(userDetail);
 			System.out.println("New User Added!");
-			List<Category> listCategories = categoryDAO.listCategory();
-			m.addAttribute("listCategories", listCategories);
-			return "index";
+			m.addAttribute("user", userDetail);
+			return "Login";
 		}		
 	}
 	

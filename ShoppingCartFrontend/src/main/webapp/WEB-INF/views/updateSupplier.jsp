@@ -4,16 +4,14 @@
 	<%@taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
 	<%@include file="header.jsp" %>	
 	<title>Update Supplier Details</title>
-	<style>
-	.panel-success>.panel-heading {
-	    font-weight: bold;
-	    color: #ffffff;
-	    background-color: #5cb85c;
-	    border-color: #4cae4c;
-	}
-	.tableTextvAlign {
-	vertical-align:middle!important;
-	}
+	<style type="text/css">
+	.bg { 
+    	background-image: url("../resources/images/bgImages/Final.jpg");
+    	height: 100%; 
+    	background-position: center;
+    	background-repeat:repeat-y;
+    	background-size: cover;
+	}	
 	</style>
 </head>
 <body class="bg">
@@ -24,27 +22,34 @@
 	<div class="panel panel-success" >
     	<div class="panel-heading">
         	<div class="panel-title">Update Supplier Details</div>
-       	</div>
-		<div class="panel-body" style="height:400px;">
-			<table class="table table-hover table-condensed table-responsive">
-				<tr>
-					<td><label for="supplierId">Supplier ID:</label></td>
-					<td><form:input path="supplierId"/></td>
-				</tr>
-				<tr>
-					<td><label for="supplierName">Supplier Name:</label></td>
-					<td><form:input path="supplierName" /></td>
-				</tr>
-				<tr>	
-					<td><label for="supplierMobile">Supplier Mobile Number</label></td>	
-					<td><form:input path="supplierMobileNo"/></td>
-				</tr>
-				<tr> 
-					<td colspan="2" align="center" style="padding-top:15px"><input type="submit" value="Update Supplier Details" class="btn btn-success" /></td>
-				</tr>
-			</table>		
-		</div>            
-    </div>
+    	</div>
+		<div class="panel-body">
+			<label for="supplierId" class="col-md-3 control-label">Supplier	ID</label>
+			<div style="margin-bottom: 25px" class="input-group">
+				<span class="input-group-addon"><i class="glyphicon glyphicon-info-sign"></i></span>
+				<form:input cssClass="form-control" path="supplierId" readonly="true" />
+			</div>
+
+			<label for="supplierName" class="col-md-3 control-label">Name of the Supplier</label>
+			<div style="margin-bottom: 25px" class="input-group">
+				<span class="input-group-addon"><i class="fa fa-truck"></i></span>
+				<form:input cssClass="form-control" path="supplierName" required="true" />
+			</div>
+
+			<label for="mobile" class="col-md-3 control-label">Mobile</label>
+			<div style="margin-bottom: 25px" class="input-group">
+				<span class="input-group-addon"><i class="glyphicon glyphicon-earphone"></i></span>
+				<form:input cssClass="form-control" path="supplierMobileNo" required="true" />
+			</div>
+
+			<div class="form-group">
+				<div class="col-md-offset-3 col-md-9">
+					<input type="submit" value="Update Supplier Details" class="btn btn-success" id="btn-updateSupplier"/>
+				</div>
+			</div>
+			
+		</div>
+	</div>
 </div>
 </form:form>
 </div>

@@ -47,7 +47,7 @@ function calculateSubTotal(price){
 					</tr>
 					<tr>
 						<td><b>Select quantity here: </b></td>
-						<td><select id="selectedQuantity" name="quantity" onchange="calculateSubTotal(${product.price});">
+						<td><select id="selectedQuantity" name="quantity" onchange="calculateSubTotal(${product.price});" required="required">
 								<option value="0">-----Select-----</option>
 								<c:forEach items="${quantityValues}" var="quan">
 									<option value="${quan.key}">${quan.value}</option>

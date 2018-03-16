@@ -30,12 +30,12 @@
 						<label for="catname" class="col-md-3 control-label">Category Name</label>
 						<div style="margin-bottom: 25px" class="input-group">
 								<span class="input-group-addon"><i class="glyphicon glyphicon-book"></i></span>	
-								<input type="text" id="catname" class="form-control" name="catname" value="${categoryInfo.categoryName}"/>
+								<input type="text" id="catname" class="form-control" name="catname" value="${categoryInfo.categoryName}" required/>
 						</div>
 						<label for="catDesc" class="col-md-3 control-label">Category Description</label>
 						<div style="margin-bottom: 25px" class="input-group">
 								<span class="input-group-addon"><i class="glyphicon glyphicon-align-justify"></i></span>	
-								<input type="text" id="catDesc" class="form-control" name="catDesc" value="${categoryInfo.categoryDesc}"/>
+								<input type="text" id="catDesc" class="form-control" name="catDesc" value="${categoryInfo.categoryDesc}" required/>
 						</div>
 						<div style="margin-top:10px;" class="form-group">
 							<div class="col-sm-12 controls">		

@@ -3,19 +3,16 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
 <%@include file="header.jsp" %>
-<link rel="stylesheet" href="resources/css/basicStyles.css">
 <title>Cart Page</title>
 <style>
-	.panel-success>.panel-heading {
-	    font-weight: bold;
-	    color: #ffffff;
-	    background-color: #5cb85c;
-	    border-color: #4cae4c;
+	.bg { 
+    	background-image: url("../resources/images/bgImages/Final.jpg");
+    	height: 100%; 
+    	background-position: center;
+    	background-repeat:repeat-y;
+    	background-size: cover;
 	}
-	.tableTextvAlign {
-	vertical-align:middle!important;
-	}
-</style>
+	</style>
 </head>
 <body class="bg">
 	<div class="container">
@@ -59,7 +56,8 @@
 					<tr>
 					<c:url value="/editCart/${cart.cartItemId}" var="editString"></c:url>
 					<c:url value="/deleteCart/${cart.cartItemId}" var="deleteString"></c:url>
-					<td colspan="2" align="center"><a href="${editString}" class="btn btn-success" role="button">Edit Cart</a>&nbsp;&nbsp;<a href="${deleteString}" class="btn btn-warning" role="button">Remove from cart</a></td>
+					<td align="center"><a href="${editString}"><img src="../resources/images/bgImages/edit.png" alt="Edit"/></a></td>
+					<td align="center"><a href="${deleteString}"><img src="../resources/images/bgImages/delete.png" alt="Delete"/></a></td>
 					</tr>
 				</c:forEach>
 					<tr align="right">

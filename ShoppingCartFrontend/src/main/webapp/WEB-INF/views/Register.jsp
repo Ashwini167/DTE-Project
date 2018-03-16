@@ -22,25 +22,25 @@
 					<label for="fname" class="col-md-3 control-label">Name</label>
 					<div style="margin-bottom: 25px" class="input-group">								
 						<span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-						<form:input path="name" cssClass="form-control" placeholder="Enter your name"/>
+						<form:input path="name" cssClass="form-control" placeholder="Enter your name" required="true"/>
 					</div>
 						
 					<label for="email" class="col-md-3 control-label">Email</label>
 					<div style="margin-bottom: 25px" class="input-group">
 						<span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
-						<form:input path="emailId" cssClass="form-control" placeholder="Enter your email ID"/>
+						<form:input path="emailId" cssClass="form-control" placeholder="Enter your email ID" required="true"/>
 					</div>
 					
 					<label for="mobile" class="col-md-3 control-label">Mobile</label>
 					<div style="margin-bottom: 25px" class="input-group">
 						<span class="input-group-addon"><i class="glyphicon glyphicon-earphone"></i></span>
-						<form:input path="mobileNo" cssClass="form-control" placeholder="Enter your mobile number"/>
+						<form:input path="mobileNo" cssClass="form-control" placeholder="Enter your mobile number" pattern="^[0-9]{10}$" required="true"/>
 					</div>
 						
 					<label for="address" class="col-md-3 control-label">Address</label>
 					<div style="margin-bottom: 25px" class="input-group">
 						<span class="input-group-addon"><i class="glyphicon glyphicon-tasks"></i></span>
-						<form:textarea path="address" rows="5" cols="30" cssClass="form-control" placeholder="Enter your address"/>
+						<form:textarea path="address" rows="5" cols="30" cssClass="form-control" placeholder="Enter your address" required="true"/>
 					</div>
 					
                     <div style="border-top: 1px solid#4cae4c; padding-top:15px;" ></div>
@@ -48,13 +48,13 @@
 					<label for="username" class="col-md-3 control-label">User Name</label>
 					<div style="margin-bottom: 25px" class="input-group">
 						<span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-						<form:input path="username" cssClass="form-control" placeholder="Choose an unique user name"/>
+						<form:input path="username" cssClass="form-control" placeholder="Choose an unique user name" required="true"/>
 					</div>
 				
 					<label for="password" class="col-md-3 control-label">Password</label>
 					<div style="margin-bottom: 25px" class="input-group">
 						<span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>	
-						<form:password path="password" cssClass="form-control" placeholder="Choose your password"/>
+						<form:password path="password" cssClass="form-control" placeholder="Choose your password" required="true"/>
 					</div>
 
 					<div class="form-group">

@@ -5,6 +5,17 @@
 <%@include file="header.jsp" %>
 <link rel="stylesheet" href="resources/css/basicStyles.css">
 <title>Confirm Order</title>
+<script type="text/javascript">
+alert('Script');
+$(document).ready(function() {
+	var date = document.getElementById("date").value;
+	alert("Date: "+date);	
+	$("#date").val(moment().format('DD-MMM-YYYY'));
+	alert("After format: "+document.getElementById("date").value);
+	
+});
+
+</script>
 </head>
 <body class="bg">
 	<div class="container">
@@ -14,7 +25,7 @@
         	</div>
         	<div class="panel-body">
         	<c:if test="${empty orderList}">
-        		<h3 align="center">Your Cart is empty!</h3>
+        		<h3 align="center">There are no orders yet!</h3>
         		<a style="align:center;" href="viewProducts" class="btn btn-primary" role="button">Continue Shopping</a>        
         	</c:if>
         <c:if test="${not empty orderList}">
@@ -26,6 +37,7 @@
         				<td>Order Status</td>
         			</tr>
         			<c:forEach items="${orderList}" var="order">
+        			<input type="hidden" value="${order.orderDate}" id="date" />
         				<tr>
         				<td>${order.orderId}</td>
         				<td>${order.orderDate}</td>

@@ -108,13 +108,13 @@
                     </ul>
                 </div>
                 <div class="col-sm-3">
-                    <h5>Shop by Categories</h5>
+                    <h5>Frequently browsed Categories</h5>
                     <ul>
                         <li><a href="exploreProducts">Men</a></li>
                         <li><a href="exploreProducts">Women</a></li>
-                        <li><a href="exploreProducts">Home Decors</a></li>
-                        <li><a href="exploreProducts">Books</a></li>
-                        <li><a href="exploreProducts">Electronics</a></li>
+                        <li><a href="exploreProducts">Accessories</a></li>
+                        <li><a href="exploreProducts">Gadgets</a></li>
+                        <li><a href="exploreProducts">Others</a></li>
                     </ul>
                 </div>
                 <div class="col-sm-3">
@@ -140,6 +140,7 @@
                     <a href="https://twitter.com/login?lang=en" class="twitter"><i class="fa fa-twitter"></i></a>
                     <a href="http://www.facebook.com" class="facebook"><i class="fa fa-facebook"></i></a>
                     <a href="http://www.gmail.com" class="google"><i class="fa fa-google-plus"></i></a>
+                    <p>&copy; Copyrights (2018) - Work by Ashwini Raghavendran</p>
                 </div>
             </div>
         </div>

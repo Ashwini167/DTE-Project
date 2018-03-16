@@ -17,22 +17,24 @@
 					<table class="table table-striped table table-hover table-condensed table-responsive">
 						<thead>
 						<tr align="center" class="tableTextvAlign">
-							<th>Username</th>
-							<th>Name of the user</th>
-							<th>Mobile</th>
-							<th>Email</th>
-							<th>Address</th>
+							<th class="tableTextvAlign">Role</th>
+							<th class="tableTextvAlign">Username</th>
+							<th class="tableTextvAlign">Name of the user</th>
+							<th class="tableTextvAlign">Mobile</th>
+							<th class="tableTextvAlign">Email</th>
+							<th colspan="2" class="tableTextvAlign">Action</th>
 						</tr>
 						</thead>
 						<tbody>
 						<c:forEach items="${userList}" var="user">
 						<tr>
-							<td class="tableTextvAlign">${user.username}</td>
-							<td class="tableTextvAlign">${user.name}</td>
-							<td class="tableTextvAlign">${user.mobileNo}</td>
-							<td class="tableTextvAlign">${user.emailId}</td>
-							<td class="tableTextvAlign">${user.address}</td>
-							<td><a href="<c:url value="editUser/${user.username}" />" class="btn btn-success" role="button">Edit</a>&nbsp;&nbsp;<a href="<c:url value="deleteUser/${user.username}" />" class="btn btn-warning" role="button">Delete</a></td>
+							<td class="tableTextvAlign" align="center">${user.role}</td>
+							<td class="tableTextvAlign" align="center">${user.username}</td>
+							<td class="tableTextvAlign" align="center">${user.name}</td>
+							<td class="tableTextvAlign" align="right">${user.mobileNo}</td>
+							<td class="tableTextvAlign" align="center">${user.emailId}</td>
+							<td><a href="<c:url value="editUser/${user.username}" />"><img src="resources/images/bgImages/edit.png" alt="Edit"/></a></td>
+							<td><a href="<c:url value="deleteUser/${user.username}" />"><img src="resources/images/bgImages/delete.png" alt="Delete"/></a></td>
 						</tr>
 						</c:forEach>
 						</tbody>

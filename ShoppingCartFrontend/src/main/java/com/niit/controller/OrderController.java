@@ -56,6 +56,12 @@ public class OrderController {
 		for(CartItem cartItem:listCartItems) {
 			cartItem.setPaymentStatus("P");
 			cartItemDAO.updateCartItem(cartItem);
+			Product product = productDAO.viewProduct(cartItem.getProductId());
+			if(product.getStock()>0)
+				product.setStock((product.getStock()-1));
+			else
+				product.setStock(0);
+			productDAO.updateProduct(product);
 		}
 		
 		Map<String,String> productSupplierMap = new LinkedHashMap<String,String>();

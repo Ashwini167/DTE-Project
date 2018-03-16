@@ -21,11 +21,11 @@
                         <form:form id="loginform" cssClass="form-horizontal" action="${actionString}" method="POST" modelAttribute="user">                                    
                             <div style="margin-bottom: 25px" class="input-group">
                             	<span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                                <form:input id="login-username" cssClass="form-control" path="username" placeholder="username or email" />                                        
+                                <form:input id="login-username" cssClass="form-control" path="username" placeholder="username" required="true"/>                                        
                            	</div>    
                             <div style="margin-bottom: 25px" class="input-group">
                             	<span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
-                                <form:password id="login-password" cssClass="form-control" path="password" placeholder="password" />
+                                <form:password id="login-password" cssClass="form-control" path="password" placeholder="password" required="true" />
                             </div>   
                             <div class="input-group">
                             	<div class="checkbox">

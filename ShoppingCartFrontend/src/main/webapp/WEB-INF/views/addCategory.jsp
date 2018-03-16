@@ -45,7 +45,7 @@
 					<th>Category ID</th>
 					<th>Category Name</th>
 					<th>Category Desc</th>
-					<th>Action</th>
+					<th colspan="2">Action</th>
 				</tr>
 				</thead>
 				<tbody>
@@ -54,7 +54,8 @@
 					<td class="tableTextvAlign">${category.categoryId}</td>
 					<td class="tableTextvAlign">${category.categoryName}</td>
 					<td class="tableTextvAlign">${category.categoryDesc}</td>
-					<td><a href="<c:url value="editCategory/${category.categoryId}" />" class="btn btn-success" role="button">Edit</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="<c:url value="deleteCategory/${category.categoryId}" />" class="btn btn-warning" role="button">Delete</a></td>
+					<td><a href="<c:url value="editCategory/${category.categoryId}" />" ><img src="resources/images/bgImages/edit.png" alt="Edit"/></a></td>
+					<td><a href="<c:url value="deleteCategory/${category.categoryId}" />" ><img src="resources/images/bgImages/delete.png" alt="Delete"/></a></td>
 				</tr>
 				</c:forEach>
 				</tbody>

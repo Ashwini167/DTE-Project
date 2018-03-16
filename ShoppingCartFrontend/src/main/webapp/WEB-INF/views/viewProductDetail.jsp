@@ -1,19 +1,16 @@
 <html>
-<head>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
-<%@include file="header.jsp" %>
-<link rel="stylesheet" href="resources/css/basicStyles.css">
-<title>Product Details</title>
+<head>	
+	<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+	<%@taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
+	<%@include file="header.jsp" %>	
+	<title>Product Details</title>
 <style>
-	.panel-success>.panel-heading {
-	    font-weight: bold;
-	    color: #ffffff;
-	    background-color: #5cb85c;
-	    border-color: #4cae4c;
-	}
-	.tableTextvAlign {
-	vertical-align:middle!important;
+	.bg { 
+    	background-image: url("../resources/images/bgImages/Final.jpg");
+    	height: 100%; 
+    	background-position: center;
+    	background-repeat:repeat-y;
+    	background-size: cover;
 	}
 </style>
 </head>
@@ -43,7 +40,13 @@
 	</tr>
 	<tr>		
 		<td>Available Quantity</td>
-		<td>${product.stock}</td>
+		<c:set value="${product.stock}" var="stock"></c:set>
+		<c:if test="${stock==0}">
+			<td>Sorry! Currently this product is out of stock!</td>
+		</c:if>
+		<c:if test="${stock>0}">
+			<td>${product.stock}</td>
+		</c:if>
 	</tr>
 	<tr>
 		<td><b>Select quantity here: </b></td>
@@ -56,7 +59,7 @@
 		</td>
 	</tr>
 	<tr>
-		<td colspan="2" align="right"><input type="submit" id="btn-signup" class="btn btn-success icon-hand-right" value="Add to Cart" /></td>
+		<td colspan="2" align="right"><input type="image" id="btn-signup" src="../resources/images/bgImages/cart.png" name="submit" alt="Add to Cart" /></td>
 	</tr>			
 </table>
 </form:form>
