@@ -103,6 +103,5 @@ public class DBConfig {
 	public OrderDetailDAO getOrderDetailDAO()	{
 		System.out.println("----OrderDetailDAO bean creation---");
 		return new OrderDetailDAOImpl();
-	}
-	
+	}	
 }

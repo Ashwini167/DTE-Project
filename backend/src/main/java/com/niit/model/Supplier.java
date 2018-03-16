@@ -1,6 +1,7 @@
 package com.niit.model;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
@@ -8,6 +9,7 @@ import javax.persistence.Table;
 @Table
 public class Supplier {
 	@Id
+	@GeneratedValue
 	private int supplierId;
 	private String supplierName;
 	private String supplierMobileNo;
