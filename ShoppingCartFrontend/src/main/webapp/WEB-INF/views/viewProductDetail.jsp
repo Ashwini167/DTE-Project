@@ -20,6 +20,7 @@
 		<div class="panel-heading">
         	<div class="panel-title">Your Cart</div>
         </div>
+        <div class="panel-body table-responsive">
 <c:url value="/addToCart/${product.productId}" var="actionString"></c:url>
 <form:form action="${actionString}">
 	<table align="center" class="table table-hover table-condensed"  style="width: 90%;">
@@ -63,6 +64,7 @@
 	</tr>			
 </table>
 </form:form>
+</div>
 </div>
 </div>
 <%@include file="footer.jsp" %>

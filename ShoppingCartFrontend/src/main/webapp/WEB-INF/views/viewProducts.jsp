@@ -25,17 +25,16 @@
 	    <div class="panel-body">
 	    <p><strong>Browse by categories:</strong></p>
 	    <p style="padding-bottom:15px;">
-	    	<a href="#" class="btn btn-primary btn-sm" role="button">All</a>&nbsp;&nbsp;&nbsp;&nbsp;
 	    	<c:forEach items="${catList}" var="category">
 	    		<c:set var="catIdFromList" value="${category.key}"></c:set>
-	   			<a class="btn-primary btn-sm" role="button" data-toggle="collapse" href="#<c:out value="${catIdFromList}"/>" aria-expanded="false" aria-controls="collapseExample">${category.value}</a>&nbsp;&nbsp;&nbsp;&nbsp;
+	   			<a class="btn-primary btn-sm" role="button" href="#<c:out value="${catIdFromList}"/>">${category.value}</a>&nbsp;&nbsp;&nbsp;&nbsp;
 	   		</c:forEach>
 	   	</p>
 	   	<c:forEach items="${catList}" var="category">
 	   	<c:set var="catIdForCollapse" value="${category.key}"></c:set>
-	   	<div class="collapse" id="${catIdForCollapse}">			
+	   	<div>			
 			<div class="row">			
-			<div class="well"><h4 style="font-weight: bold;">${category.value}</h4></div>
+			<div class="well"><h4 style="font-weight: bold;" id="${catIdForCollapse}">${category.value}</h4></div>
 				<c:forEach items="${listProducts}" var="product">
 				<c:set var = "catIdFromProduct" value = "${product.categoryId}"/>
 				<c:set var = "catIdFromCategoryList" value = "${category.key}"/>

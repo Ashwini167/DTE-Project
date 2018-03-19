@@ -6,7 +6,7 @@
 <title>Cart Page</title>
 <style>
 	.bg { 
-    	background-image: url("../resources/images/bgImages/Final.jpg");
+    	background-image: url("../resources/images/bgImages/Final.jpg"), url("resources/images/bgImages/Final.jpg");
     	height: 100%; 
     	background-position: center;
     	background-repeat:repeat-y;
@@ -56,8 +56,8 @@
 					<tr>
 					<c:url value="/editCart/${cart.cartItemId}" var="editString"></c:url>
 					<c:url value="/deleteCart/${cart.cartItemId}" var="deleteString"></c:url>
-					<td align="center"><a href="${editString}"><img src="../resources/images/bgImages/edit.png" alt="Edit"/></a></td>
-					<td align="center"><a href="${deleteString}"><img src="../resources/images/bgImages/delete.png" alt="Delete"/></a></td>
+					<td align="center"><a href="${editString}"><img src="resources/images/bgImages/edit.png" alt="Edit" onerror="this.src='../resources/images/bgImages/edit.png';"/></a></td>
+					<td align="center"><a href="${deleteString}"><img src="resources/images/bgImages/delete.png" alt="Delete" onerror="this.src='../resources/images/bgImages/delete.png';"/></a></td>
 					</tr>
 				</c:forEach>
 					<tr align="right">

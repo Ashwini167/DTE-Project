@@ -3,7 +3,16 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
 <%@include file="header.jsp" %>
-<link rel="stylesheet" href="resources/css/basicStyles.css">
+<title>Edit Cart Item</title>
+<style>
+	.bg { 
+    	background-image: url("../resources/images/bgImages/Final.jpg"), url("resources/images/bgImages/Final.jpg");
+    	height: 100%; 
+    	background-position: center;
+    	background-repeat:repeat-y;
+    	background-size: cover;
+	}
+</style>
 <script type="text/javascript">
 
 function calculateSubTotal(price){
@@ -12,23 +21,14 @@ function calculateSubTotal(price){
 }
 
 </script>
-<title>Product Details</title>
-<style>
-	.bg { 
-    	background-image: url("../resources/images/bgImages/Final.jpg");
-    	height: 100%; 
-    	background-position: center;
-    	background-repeat:repeat-y;
-    	background-size: cover;
-	}
-</style>
 </head>
 <body class="bg">
 <div class="container">
-<div class="panel panel-success">
+<div class="panel panel-success table-responsive">
 	<div class="panel-heading">
        	<div class="panel-title">Edit your cart item</div>
     </div>
+    <div class="panel-body table-responsive">
 	<c:url value="/updateCart" var="actionString"></c:url>
 	<form:form action="${actionString}" modelAttribute="cartItem">
 	<form:hidden path="cartItemId"/>
@@ -36,7 +36,7 @@ function calculateSubTotal(price){
 	<form:hidden path="productId"/>
 	<form:hidden path="username"/>
 	<form:hidden path="paymentStatus"/>	
-				<table class="table table-hover table-condensed" style="width: 90%;">
+				<table class="table table-hover table-condensed">
 					<tr align="center">
 						<td class="tableTextvAlign" rowspan="7">
 							<img src="<c:url value="/resources/images/${product.productId}.jpg"/>" alt="ProductImage" width="100" height="100" />
@@ -64,6 +64,7 @@ function calculateSubTotal(price){
 					</tr>
 				</table>
 			</form:form>
+	</div>
 </div>
 </div>
 <%@include file="footer.jsp" %>

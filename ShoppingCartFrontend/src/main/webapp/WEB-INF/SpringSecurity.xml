@@ -25,13 +25,6 @@
 						authentication-failure-url="/login?"
 						authentication-success-forward-url="/login_success" />
 						
-	<security:intercept-url pattern="/login" access="isAnonymous()"/>
-	<security:intercept-url pattern="/home" access="isAnonymous()"/>
-	<security:intercept-url pattern="/register" access="isAnonymous()"/>
-	<security:intercept-url pattern="/contactus" access="isAnonymous()"/>
-	<security:intercept-url pattern="/exploreProducts" access="isAnonymous()"/>
-	<security:intercept-url pattern="/addUserDetail" access="isAnonymous()"/>
-		
 	<security:intercept-url pattern="/editUser/*" access="isAuthenticated()"/>
 	<security:intercept-url pattern="/editUserDetails" access="isAuthenticated()"/>
 	

@@ -17,6 +17,7 @@
 				<table class="table table-striped table table-hover table-condensed table-responsive">
 					<thead>
 					<tr align="center">
+						<th>Product Image</th>
 						<th>Product ID</th>
 						<th>Product Name</th>
 						<th>Product Desc</th>
@@ -30,6 +31,7 @@
 					<tbody>
 					<c:forEach items="${listProducts}" var="product">
 					<tr>
+						<td class="tableTextvAlign" align="center"><img src="<c:url value="/resources/images/${product.productId}.jpg"/>" alt="ProductImage" width="100" height="100"/></td>
 						<td class="tableTextvAlign" align="center">${product.productId}</td>
 						<td class="tableTextvAlign">${product.productName}</td>
 						<td class="tableTextvAlign">${product.prodDesc}</td>
@@ -37,8 +39,8 @@
 						<td class="tableTextvAlign" align="right">${product.stock}</td>
 						<td class="tableTextvAlign" align="right">${product.categoryId}</td>
 						<td class="tableTextvAlign" align="center">${product.supplierId}</td>
-						<td><a href="<c:url value="editProduct/${product.productId}" />"><img src="resources/images/bgImages/edit.png" alt="Edit"/></a></td>
-						<td><a href="<c:url value="deleteProduct/${product.productId}" />" ><img src="resources/images/bgImages/delete.png" alt="Delete"/></a></td>
+						<td class="tableTextvAlign" align="center"><a href="<c:url value="editProduct/${product.productId}" />"><img src="resources/images/bgImages/edit.png" alt="Edit"/></a></td>
+						<td class="tableTextvAlign" align="center"><a href="<c:url value="deleteProduct/${product.productId}" />" ><img src="resources/images/bgImages/delete.png" alt="Delete"/></a></td>
 					</tr>
 					</c:forEach>
 					</tbody>

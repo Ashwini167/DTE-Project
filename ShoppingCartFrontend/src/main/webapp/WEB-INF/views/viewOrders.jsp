@@ -4,15 +4,15 @@
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
 <%@include file="header.jsp" %>
 <link rel="stylesheet" href="resources/css/basicStyles.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.21.0/locale/es-us.js"></script>
 <title>Confirm Order</title>
 <script type="text/javascript">
-alert('Script');
+//alert('Script');
 $(document).ready(function() {
 	var date = document.getElementById("date").value;
-	alert("Date: "+date);	
-	$("#date").val(moment().format('DD-MMM-YYYY'));
-	alert("After format: "+document.getElementById("date").value);
-	
+	//alert("Date: "+date);	
+	$("#date").val(moment(date).format('DD-MMM-YYYY'));
+	//alert("After format: "+document.getElementById("date").value);	
 });
 
 </script>

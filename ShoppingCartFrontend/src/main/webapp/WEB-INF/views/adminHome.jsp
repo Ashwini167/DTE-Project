@@ -18,13 +18,13 @@
 </head>
 <body class="bg">
 	<div class="container">
-		<div class="panel panel-success">
+		<div class="panel panel-success responsive">
 			<div class="panel-heading success">Welcome back <b>${nameOfUser}!</b> Please choose one of the options
 					from the below actions.</div>
 			<div class="panel-body">
 			<div class="media">
 				<div class="media-left media-middle">
-					<a href="#"> 
+					<a href="updateCategoryDetails"> 
 						<img class="media-object" src="resources/images/bgImages/Category.jpg" alt="Categories">
 					</a>
 				</div>
@@ -40,7 +40,7 @@
 
 			<div class="media">
 				<div class="media-left media-middle">
-					<a href="#"> 
+					<a href="updateProduct"> 
 						<img class="media-object" src="resources/images/bgImages/Products.png" alt="Products">
 					</a>
 				</div>
@@ -55,7 +55,7 @@
 
 			<div class="media">
 				<div class="media-left media-middle">
-					<a href="#"> 
+					<a href="viewUsersList"> 
 						<img class="media-object" src="resources/images/bgImages/Users.jpg" alt="Users">
 					</a>
 				</div>
@@ -69,7 +69,7 @@
 
 			<div class="media">
 				<div class="media-left media-middle">
-					<a href="#"> 
+					<a href="viewSupplierDetails"> 
 						<img class="media-object" src="resources/images/bgImages/Supplier.jpg" alt="Suppliers">
 					</a>
 				</div>

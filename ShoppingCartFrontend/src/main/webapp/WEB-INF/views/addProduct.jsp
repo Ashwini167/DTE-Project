@@ -73,12 +73,12 @@
 	</div>
 	
 	<div id="loginbox" class="mainbox col-md-12 col-sm-8 margin50">
-	<div class="panel panel-success" >
+	<div class="panel panel-success  table-responsive" >
 		<div class="panel-heading">
        		<div class="panel-title">Available products</div>
         </div>
         <div style="padding-top:30px;" class="panel-body">
-			<table class="table table-striped table table-hover table-condensed table-responsive">
+			<table class="table table-striped table table-hover table-condensed">
 				<thead>
 				<tr align="center">
 					<th>Product ID</th>
@@ -101,8 +101,8 @@
 					<td class="tableTextvAlign" align="right">${product.stock}</td>
 					<td class="tableTextvAlign" align="right">${product.categoryId}</td>
 					<td class="tableTextvAlign" align="center">${product.supplierId}</td>
-					<td><a href="<c:url value="editProduct/${product.productId}" />"><img src="resources/images/bgImages/edit.png" alt="Edit"/></a></td>
-					<td><a href="<c:url value="deleteProduct/${product.productId}" />" ><img src="resources/images/bgImages/delete.png" alt="Delete"/></a></td>
+					<td><a href="<c:url value="editProduct/${product.productId}" />"><img src="resources/images/bgImages/edit.png" alt="Edit" onerror="this.src='../resources/images/bgImages/edit.png';"/></a></td>
+					<td><a href="<c:url value="deleteProduct/${product.productId}" />" ><img src="resources/images/bgImages/delete.png" alt="Delete" onerror="this.src='../resources/images/bgImages/delete.png';"/></a></td>
 				</tr>
 				</c:forEach>
 				</tbody>
