@@ -33,6 +33,7 @@ public class UserDetailController {
 		return "viewUsersList";
 	}
 	
+	@SuppressWarnings("unchecked")
 	@RequestMapping("/login_success")
 	public String showSuccessPage(HttpSession session, Model m) {
 		String page="";

@@ -109,6 +109,7 @@
         </li> 
         <li role="presentation"><a href="${logout}">Log Out<span class="sr-only">(current)</span></a></li>
         </c:if>
+        
         <c:if test="${role=='ROLE_USER'}">
         	<li role="presentation"><a href="${home}">Home<span class="sr-only">(current)</span></a></li> 
         	<li><a href="${viewProducts}">View Products</a></li>
@@ -124,6 +125,7 @@
           		</ul>
           	</li>
         </c:if>
+    
         </c:if>               
       </ul>
      </div>	

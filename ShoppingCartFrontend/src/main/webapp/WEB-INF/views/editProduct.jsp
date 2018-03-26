@@ -27,7 +27,7 @@
 				<label for="productId" class="col-md-3 control-label">Product ID</label>
 				<div style="margin-bottom: 25px" class="input-group">								
 					<span class="input-group-addon"><i class="glyphicon glyphicon-info-sign"></i></span>
-					<form:input path="productId" id="productId" cssClass="form-control" readonly="readonly" required="true"/>
+					<form:input path="productId" id="productId" cssClass="form-control" readonly="true" required="true"/>
 				</div>
 										
 				<label for="pName" class="col-md-3 control-label">Product Name</label>

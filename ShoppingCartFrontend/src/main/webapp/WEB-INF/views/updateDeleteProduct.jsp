@@ -4,6 +4,15 @@
 	<%@include file="header.jsp" %>
 	<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 	<title>Update or Delete Product</title>
+	<style>
+	.bg { 
+    	background-image: url("../resources/images/bgImages/Final.jpg"), url("resources/images/bgImages/Final.jpg");
+    	height: 100%; 
+    	background-position: center;
+    	background-repeat:repeat-y;
+    	background-size: cover;
+	}
+	</style>
 </head>
 <body class="bg">
 <div class="container">
@@ -13,8 +22,8 @@
 			<div class="panel-heading">
 	       		<div class="panel-title">Available products</div>
 	        </div>
-	        <div style="padding-top:30px;" class="panel-body">
-				<table class="table table-striped table table-hover table-condensed table-responsive">
+	        <div style="padding-top:30px;" class="panel-body table-responsive">
+				<table class="table table-striped table table-hover table-condensed">
 					<thead>
 					<tr align="center">
 						<th>Product Image</th>
@@ -31,7 +40,7 @@
 					<tbody>
 					<c:forEach items="${listProducts}" var="product">
 					<tr>
-						<td class="tableTextvAlign" align="center"><img src="<c:url value="/resources/images/${product.productId}.jpg"/>" alt="ProductImage" width="100" height="100"/></td>
+						<td class="tableTextvAlign" align="center"><img src="<c:url value="/resources/images/${product.productId}.jpg"/>" alt="ProductImage" width="70" height="100"/></td>
 						<td class="tableTextvAlign" align="center">${product.productId}</td>
 						<td class="tableTextvAlign">${product.productName}</td>
 						<td class="tableTextvAlign">${product.prodDesc}</td>
@@ -39,8 +48,8 @@
 						<td class="tableTextvAlign" align="right">${product.stock}</td>
 						<td class="tableTextvAlign" align="right">${product.categoryId}</td>
 						<td class="tableTextvAlign" align="center">${product.supplierId}</td>
-						<td class="tableTextvAlign" align="center"><a href="<c:url value="editProduct/${product.productId}" />"><img src="resources/images/bgImages/edit.png" alt="Edit"/></a></td>
-						<td class="tableTextvAlign" align="center"><a href="<c:url value="deleteProduct/${product.productId}" />" ><img src="resources/images/bgImages/delete.png" alt="Delete"/></a></td>
+						<td class="tableTextvAlign" align="center"><a href="<c:url value="editProduct/${product.productId}" />"><img src="resources/images/bgImages/edit.png" alt="Edit" onerror="this.src='../resources/images/bgImages/edit.png';"/></a></td>
+						<td class="tableTextvAlign" align="center"><a href="<c:url value="deleteProduct/${product.productId}" />" ><img src="resources/images/bgImages/delete.png" alt="Delete" onerror="this.src='../resources/images/bgImages/delete.png';"/></a></td>
 					</tr>
 					</c:forEach>
 					</tbody>
