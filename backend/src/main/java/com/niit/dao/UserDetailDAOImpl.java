@@ -69,7 +69,7 @@ public class UserDetailDAOImpl implements UserDetailDAO {
 	@Override
 	public UserDetail viewUserDetailByUsername(String username) {
 		try {
-			return (UserDetail) sessionFactory.getCurrentSession().createQuery("from UserDetail where username='"+username+"'").list();
+			return (UserDetail) sessionFactory.getCurrentSession().createQuery("from UserDetail where username='"+username+"'").list().get(0);
 		}catch(Exception e) {
 			System.out.println("There is an exception here! The details are: \n =================================");
 			System.out.println(e);
