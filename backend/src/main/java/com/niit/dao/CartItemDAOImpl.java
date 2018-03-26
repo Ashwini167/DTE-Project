@@ -1,8 +1,6 @@
 package com.niit.dao;
 
 import java.util.List;
-import org.hibernate.Query;
-import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -55,14 +53,12 @@ public class CartItemDAOImpl implements CartItemDAO {
 			return false;
 		}
 	}
-
+	
+	@Transactional
 	@Override
 	public CartItem getCartItem(int cartItemId) {
 		try {
-			Session session = sessionFactory.openSession();
-			CartItem cartItem = (CartItem)session.get(CartItem.class, cartItemId);
-			session.close();
-			return cartItem;
+			return (CartItem) sessionFactory.getCurrentSession().get(CartItem.class, cartItemId);
 		}
 		catch(Exception e) {
 			System.out.println("There is an exception here! The details are: \n =================================");
@@ -71,37 +67,31 @@ public class CartItemDAOImpl implements CartItemDAO {
 		}
 	}
 
+	@SuppressWarnings("unchecked")
+	@Transactional
 	@Override
 	public List<CartItem> listCartItems(String username) {
 		try {
-			Session session = sessionFactory.openSession();
-			Query query = session.createQuery("from CartItem where username=:username and paymentStatus='NP'");
-			query.setParameter("username", username);
-			List<CartItem> listCartItem = (List<CartItem>)query.list();
-			session.close();
-			return listCartItem;
+			String queryString = "from CartItem where username='"+username+"' and paymentStatus='NP'";
+			return (List<CartItem>)sessionFactory.getCurrentSession().createQuery(queryString).list();
 		} catch(Exception e) {
 			System.out.println("There is an exception here! The details are: \n =================================");
 			System.out.println(e);
 			return null;
 		}
 	}
-
+	
+	@SuppressWarnings("unchecked")
+	@Transactional
 	@Override
 	public List<CartItem> getCartItemByCartId(String username,int cartId) {
 		try {
-			Session session = sessionFactory.openSession();
-			Query query = session.createQuery("from CartItem where username=:username and cartId:=cartId");
-			query.setParameter("username", username);
-			query.setParameter("cartId", cartId);
-			List<CartItem> listCartItems = (List<CartItem>)query.list();
-			session.close();
-			return listCartItems;
+			String queryString = "from CartItem where username='"+username+"' and cartId="+cartId;
+			return (List<CartItem>)sessionFactory.getCurrentSession().createQuery(queryString).list() ;
 		} catch(Exception e) {
 			System.out.println("There is an exception here! The details are: \n =================================");
 			System.out.println(e);
 			return null;
 		}
 	}
-
 }

@@ -1,8 +1,6 @@
 package com.niit.dao;
 
 import java.util.List;
-import org.hibernate.Query;
-import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -52,14 +50,12 @@ public class OrderDetailDAOImpl implements OrderDetailDAO {
 			return false;
 		}
 	}*/
-
+	
+	@Transactional
 	@Override
 	public OrderDetail getOrder(int orderId) {
 		try {
-			Session session = sessionFactory.openSession();
-			OrderDetail orderDetail = (OrderDetail)session.get(OrderDetail.class, orderId);
-			session.close();
-			return orderDetail;
+			return (OrderDetail)sessionFactory.getCurrentSession().get(OrderDetail.class, orderId);
 		}catch(Exception e) {
 			System.out.println("There is an exception here! The details are: \n =================================");
 			System.out.println(e);
@@ -67,15 +63,12 @@ public class OrderDetailDAOImpl implements OrderDetailDAO {
 		}
 	}
 
+	@SuppressWarnings("unchecked")
+	@Transactional
 	@Override
 	public List<OrderDetail> orderList(String username) {
 		try {
-			Session session = sessionFactory.openSession();
-			Query query = session.createQuery("from OrderDetail where username=:username");
-			query.setParameter("username",username);
-			List<OrderDetail> orderList = (List<OrderDetail>)query.list() ;
-			session.close();
-			return orderList;
+			return (List<OrderDetail>)sessionFactory.getCurrentSession().createQuery("from OrderDetail where username='"+username+"'").list();
 		}catch(Exception e) {
 			System.out.println("There is an exception here! The details are: \n =================================");
 			System.out.println(e);

@@ -11,7 +11,8 @@ import com.niit.model.Product;
 
 public class ProductUnitTest {
 	static ProductDAO productDAO;
-
+	
+	@SuppressWarnings("resource")
 	@BeforeClass
 	public static void executeFirst() {
 		AnnotationConfigApplicationContext context=new AnnotationConfigApplicationContext();

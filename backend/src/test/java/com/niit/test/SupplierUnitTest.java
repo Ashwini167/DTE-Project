@@ -12,6 +12,7 @@ import com.niit.model.Supplier;
 public class SupplierUnitTest {
 	static SupplierDAO supplierDAO;
 	
+	@SuppressWarnings("resource")
 	@BeforeClass
 	public static void executeFirst()
 	{

@@ -13,6 +13,7 @@ import com.niit.model.OrderDetail;
 public class OrderDetailUnitTest {
 	static OrderDetailDAO orderDetailDAO;
 	
+	@SuppressWarnings("resource")
 	@BeforeClass	
 	public static void executeFirst() {
 		AnnotationConfigApplicationContext context=new AnnotationConfigApplicationContext();

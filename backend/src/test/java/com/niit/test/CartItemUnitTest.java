@@ -15,6 +15,7 @@ import com.niit.model.CartItem;
 public class CartItemUnitTest {
 	static CartItemDAO cartItemDAO;
 	
+	@SuppressWarnings("resource")
 	@BeforeClass
 	public static void executeFirst() {
 		AnnotationConfigApplicationContext context=new AnnotationConfigApplicationContext();

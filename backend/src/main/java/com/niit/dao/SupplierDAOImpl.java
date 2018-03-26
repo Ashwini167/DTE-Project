@@ -1,9 +1,6 @@
 package com.niit.dao;
 
 import java.util.List;
-
-import org.hibernate.Query;
-import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -55,20 +52,28 @@ public class SupplierDAOImpl implements SupplierDAO {
 		}
 	}
 
+	@Transactional
 	@Override
 	public Supplier viewSupplier(int supplierId) {
-		Session session = sessionFactory.openSession();
-		Supplier supplier = (Supplier)session.get(Supplier.class,supplierId);
-		session.close();
-		return supplier;
+		try{
+			return (Supplier)sessionFactory.getCurrentSession().get(Supplier.class,supplierId);
+		}catch(Exception e) {
+			System.out.println("There is an exception here! The details are: \n =================================");
+			System.out.println(e);
+			return null;
+		}
 	}
-
+	
+	@SuppressWarnings("unchecked")
+	@Transactional
 	@Override
 	public List<Supplier> listSuppliers() {
-		Session session = sessionFactory.openSession();
-		Query query = session.createQuery("from Supplier");
-		List<Supplier> listOfSuppliers = (List<Supplier>)query.list();
-		session.close();
-		return listOfSuppliers;
+		try{
+			return (List<Supplier>)sessionFactory.getCurrentSession().createQuery("from Supplier").list();
+		}catch(Exception e) {
+			System.out.println("There is an exception here! The details are: \n =================================");
+			System.out.println(e);
+			return null;
+		}
 	}	
 }

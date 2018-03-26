@@ -1,8 +1,6 @@
 package com.niit.dao;
 
 import java.util.List;
-import org.hibernate.Query;
-import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -27,14 +25,12 @@ public class ProductDAOImpl implements ProductDAO{
 			return false;
 		}		
 	}
-
+	
+	@Transactional
 	@Override
 	public Product viewProduct(int productId) {
 		try { 
-			Session session=sessionFactory.openSession();
-			Product product=(Product)session.get(Product.class,productId);
-			session.close();
-			return product;
+			return (Product)sessionFactory.getCurrentSession().get(Product.class, productId);
 		} catch(Exception e) {
 			System.out.println("There is an exception here! The details are: \n =================================");
 			System.out.println(e);
@@ -70,19 +66,16 @@ public class ProductDAOImpl implements ProductDAO{
 		}
 	}
 
+	@SuppressWarnings("unchecked")
+	@Transactional
 	@Override
 	public List<Product> listProducts() {
 		try {
-			Session session = sessionFactory.openSession();
-			Query query = session.createQuery("from Product");
-			List<Product> listProducts = (List<Product>)query.list();
-			session.close();
-			return listProducts;
+			return (List<Product>)sessionFactory.getCurrentSession().createQuery("from Product").list();
 		} catch(Exception e) {
 			System.out.println("There is an exception here! The details are: \n =================================");
 			System.out.println(e);
 			return null;
 		}
 	}
-
 }

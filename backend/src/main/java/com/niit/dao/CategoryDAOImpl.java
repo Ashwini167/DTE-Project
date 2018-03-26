@@ -1,8 +1,6 @@
 package com.niit.dao;
 
 import java.util.List;
-import org.hibernate.Query;
-import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -29,12 +27,15 @@ public class CategoryDAOImpl implements CategoryDAO {
 		}
 	}
 	
+	@Transactional
 	@Override
 	public Category getCategory(int categoryId) {
-		Session session=sessionFactory.openSession();
-		Category category=(Category)session.get(Category.class,categoryId);
-		session.close();
-		return category;
+		try{
+			return (Category)sessionFactory.getCurrentSession().get(Category.class,categoryId);
+		}catch(Exception e) {
+			System.out.println("There is an exception here! The details are: \n ================================= \n"+e);
+			return null;
+		}		
 	}
 
 	@Transactional
@@ -65,11 +66,15 @@ public class CategoryDAOImpl implements CategoryDAO {
 		}
 	}
 
+	@SuppressWarnings("unchecked")
+	@Transactional
 	@Override
 	public List<Category> listCategory() {
-		Session session = sessionFactory.openSession();
-		Query query = session.createQuery("from Category");
-		List<Category> listCategories = (List<Category>)query.list();
-		return listCategories;
+		try{
+			return (List<Category>)sessionFactory.getCurrentSession().createQuery("from Category").list();
+		}catch(Exception e) {
+			System.out.println("There is an exception here! The details are: \n ================================= \n"+e);
+			return null;
+		}
 	}	
 }
