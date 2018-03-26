@@ -53,6 +53,7 @@
 			</div>
 		</div>
 		</div>
+	
 		<div class="container">
 		<div class="panel panel-success">
 			<div class="panel-heading">
@@ -77,7 +78,7 @@
 				</div>
 			</div>
 		</div>
-	</div>
+	</div>	
 	<%@include file="footer.jsp" %>
 </body>
 </html>

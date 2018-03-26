@@ -23,7 +23,9 @@
 				<div class="panel-heading">
 					<div class="panel-title">Edit User Details</div>
 				</div>
-			<div class="panel-body">	
+			<div class="panel-body">
+				<form:hidden path="enabled"/>
+				<form:hidden path="role"/>	
 					<label for="fname" class="col-md-3 control-label">Name</label>
 					<div style="margin-bottom: 25px" class="input-group">								
 						<span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
@@ -66,7 +68,7 @@
 						<div class="col-md-offset-3 col-md-9">
 							<input type="submit" class="btn btn-success btnAlign" value="Update" />
 						</div>
-					</div>	
+					</div>
 				</div>	
 			</div>
 			</div>
